@@ -1,0 +1,32 @@
+/* MOBILE FIRST */ 
+
+// variables
+$bright-cyan: #39cdcc;
+$dull-blue: #21407d;
+$grayish-blue: #545f7d;
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html{
+  font-size: 62.5%;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body{
+  position: relative;
+  width: 100%;
+  min-height: 75rem;
+  height: 100vh;
+  background: radial-gradient(circle at top center,$rg-background1, $rg-background2);
+}
+
+@import './modal';
+@import './main';
+@import './footer';
