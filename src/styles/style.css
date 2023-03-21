@@ -1,0 +1,276 @@
+/* MOBILE FIRST */
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 75rem;
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.text-dull-blue {
+  color: #21407d;
+}
+
+.text-grayish-blue {
+  color: #545f7d;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.text-20 {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.text-40 {
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+input[type="text"], main.login-main .login-form input[type="text"],
+input[type="password"],
+main.login-main .login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-width: 447px;
+  height: 50px;
+  background: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  color: #21407d;
+}
+
+input[type="text"]:focus, main.login-main .login-form input[type="text"]:focus,
+input[type="password"]:focus,
+main.login-main .login-form input[type="password"]:focus {
+  border: 2px solid rgba(33, 64, 125, 0.6);
+}
+
+input[type="text"]::-webkit-input-placeholder, main.login-main .login-form input[type="text"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder,
+main.login-main .login-form input[type="password"]::-webkit-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+input[type="text"]:-ms-input-placeholder, main.login-main .login-form input[type="text"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder,
+main.login-main .login-form input[type="password"]:-ms-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+input[type="text"]::-ms-input-placeholder, main.login-main .login-form input[type="text"]::-ms-input-placeholder,
+input[type="password"]::-ms-input-placeholder,
+main.login-main .login-form input[type="password"]::-ms-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+input[type="text"]::placeholder, main.login-main .login-form input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+main.login-main .login-form input[type="password"]::placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+main.login-main {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Avenir Next LT Pro", sans-serif;
+}
+
+@media (min-width: 1000px) {
+  main.login-main {
+    max-height: 100vh;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+main.login-main .login-bg,
+main.login-main .login-form {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+main.login-main .login-bg {
+  padding: 106px 67px;
+}
+
+main.login-main .login-bg div {
+  background: url("../assets/user/login-bg.svg") no-repeat 50% 175px;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+main.login-main .login-bg div img {
+  padding: 0 30px;
+}
+
+main.login-main .login-form {
+  -webkit-box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+          box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+  padding: 0 100px;
+  position: relative;
+}
+
+main.login-main .login-form form {
+  max-width: 447px;
+  width: 100%;
+}
+
+main.login-main .login-form input {
+  margin-bottom: 24px;
+}
+
+@media (min-width: 1000px) {
+  main.login-main .login-form {
+    padding-top: 24.5vh;
+  }
+}
+
+main.login-main .login-form .forgot-wrapper {
+  margin-bottom: 30px;
+}
+
+main.login-main .login-form .forgot-password {
+  width: 147px;
+  height: 17px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: right;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #39cdcc;
+}
+
+main.login-main .login-form button.show-password {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 24px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  color: #39cdcc;
+  cursor: pointer;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+main.login-main .login-form button.show-password:hover {
+  color: #21407d;
+}
+
+main.login-main .login-form .green-btn {
+  background: #39cdcc;
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 2px solid #39cdcc;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: white;
+  padding: 0.875rem;
+  cursor: pointer;
+  -webkit-transition: 150ms all ease-in;
+  transition: 150ms all ease-in;
+}
+
+main.login-main .login-form .green-btn:hover {
+  background: #21407d;
+  border: 2px solid #21407d;
+}
+
+main.login-main .login-form button {
+  font-family: "Avenir Next LT Pro", sans-serif;
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */

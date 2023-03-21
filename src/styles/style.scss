@@ -1,11 +1,11 @@
-/* MOBILE FIRST */ 
+/* MOBILE FIRST */
 
 // variables
 $bright-cyan: #39cdcc;
 $dull-blue: #21407d;
 $grayish-blue: #545f7d;
 
-*{
+* {
   margin: 0;
   padding: 0;
   outline: none;
@@ -14,19 +14,98 @@ $grayish-blue: #545f7d;
   text-decoration: none;
 }
 
-html{
+html {
   font-size: 62.5%;
-  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
-body{
+body {
   position: relative;
   width: 100%;
   min-height: 75rem;
   height: 100vh;
-  background: radial-gradient(circle at top center,$rg-background1, $rg-background2);
 }
 
-@import './modal';
-@import './main';
-@import './footer';
+main {
+  width: 100%;
+}
+
+@mixin flexCenter($direction) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.text-dull-blue {
+  color: $dull-blue;
+}
+
+.text-grayish-blue {
+  color: $grayish-blue;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.text-20 {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.text-40 {
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  // margin: 8px 0;
+  box-sizing: border-box;
+  // position: absolute;
+  max-width: 447px;
+  height: 50px;
+  // left: 836px;
+  // top: 368px;
+  background: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  color: $dull-blue;
+
+  &:focus {
+    border: 2px solid rgba(33, 64, 125, 0.6);
+  }
+
+  &::placeholder {
+    color: rgba($grayish-blue, 0.6);
+  }
+}
+
+@import "./login";
