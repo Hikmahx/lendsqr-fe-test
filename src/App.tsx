@@ -4,7 +4,7 @@ import MyRoutes from "./routes/MyRoutes";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App font-kumbh-sans w-full min-h-screen relative overflow-hidden">
+      <div className="">
         <MyRoutes />
       </div>
     </BrowserRouter>
