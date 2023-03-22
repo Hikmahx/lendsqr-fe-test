@@ -4,6 +4,9 @@
 $bright-cyan: #39cdcc;
 $dull-blue: #21407d;
 $grayish-blue: #545f7d;
+$light-gray: #fbfbfb;
+// $dull-navy: #213f7d;
+$dull-navy: #7b8db0;
 
 * {
   margin: 0;
@@ -16,7 +19,12 @@ $grayish-blue: #545f7d;
 
 html {
   font-size: 62.5%;
-  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+
+input,
+button {
+  font-family: "Work Sans", sans-serif;
 }
 
 body {
@@ -109,3 +117,6 @@ input[type="password"] {
 }
 
 @import "./login";
+@import "./dashboard";
+@import "./header";
+@import "./aside";

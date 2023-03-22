@@ -17,11 +17,11 @@ const MyRoutes = () => {
   useScrollToTop();
   return (
     <Routes>
-      <Route path="/dashboard" element={<DashBoard />}>
+      <Route path="dashboard" element={<DashBoard />}>
         <Route path="" element={<Users />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="/">
+      <Route path="">
         <Route path="*" element={<NotFound />} />
         <Route path="" element={<Login />} />
       </Route>

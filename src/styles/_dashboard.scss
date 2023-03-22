@@ -1,0 +1,12 @@
+.dashboard {
+  background-color: $light-gray;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  section {
+    position: relative;
+    display: flex;
+    height: calc(100vh - 100px);
+  }
+}
