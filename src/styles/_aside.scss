@@ -17,7 +17,6 @@ aside {
       color: $dull-blue;
       border-left: 3px solid $bright-cyan;
     }
-
   }
 
   @media (max-width: 1000px) {
@@ -28,11 +27,10 @@ aside {
     // }
 
     position: absolute;
-    position: absolute;
     left: -200%;
     transition: all 150ms ease-in-out;
 
-    .showAside {
+    &.show-aside {
       left: 0;
     }
   }
@@ -44,6 +42,37 @@ aside {
 
   nav {
     padding-top: 39px;
+
+    .search-form {
+      @media (max-width: 1000px) {
+        position: relative;
+        width: 100%;
+        margin: 0 30px;
+        margin-bottom: 20px;
+        min-width: 100px;
+        max-width: 230px;
+
+        input {
+          height: 40px;
+        }
+        .search-button {
+          background: $bright-cyan;
+          @include flexCenter(row);
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          height: 40px;
+          width: 56px;
+          border: none;
+          padding: 0 13px;
+          border-radius: 0 8px 8px 0;
+        }
+      }
+      @media (min-width: 1000px) {
+        display: none;
+      }
+    }
     ul {
       margin-bottom: 21px;
 
@@ -63,8 +92,6 @@ aside {
           @include flexCenter(row);
           justify-content: start;
           margin-bottom: 10px;
-
-
         }
       }
     }
@@ -74,6 +101,7 @@ aside {
   .logout,
   .version {
     padding: 0 30px;
+    color: $dull-navy;
   }
 
   .switch-org {
@@ -86,9 +114,19 @@ aside {
     }
   }
 
-  .home{
-    a{
+  .logout {
+    padding: 10px 30px;
+    margin-top: 49px;
+    margin-bottom: 20px;
+  }
+
+  .home {
+    a {
       margin-bottom: 0;
     }
+  }
+  .version {
+    padding: 10px 30px;
+    margin-bottom: 120px;
   }
 }

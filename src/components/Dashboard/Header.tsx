@@ -1,12 +1,28 @@
 import React from "react";
 import user from "../../assets/user/user.png";
+import { useDispatch, useSelector } from "react-redux";
+import { asideToggle } from "../../redux/reducers/sharedSlice";
+import { RootState } from "../../redux/store";
+import { Link } from "react-router-dom";
 const logo: string = require("../../assets/logo/logo.svg").default;
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { showAside } = useSelector((state: RootState) => state.shared);
+
   return (
     <header>
       <div className="logo">
-        <img src={logo} alt="Lendsqr" />
+        <div
+          onClick={() => dispatch(asideToggle(!showAside))}
+          className="aside-toggle"
+          aria-hidden="true"
+        >
+          <span></span>
+        </div>
+        <Link to="/">
+          <img src={logo} alt="Lendsqr" />
+        </Link>
       </div>
       <form className="search-form">
         <div className="">

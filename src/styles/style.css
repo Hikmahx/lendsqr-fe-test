@@ -365,6 +365,59 @@ header {
 }
 
 @media (max-width: 1000px) {
+  header .aside-toggle {
+    margin-right: 16px;
+  }
+  header .aside-toggle span {
+    width: 10px;
+    position: relative;
+    display: block;
+    background: #21407d;
+    border-radius: 6px;
+    height: 2px;
+  }
+  header .aside-toggle span::before, header .aside-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: inherit;
+    background: inherit;
+    border-radius: inherit;
+    -webkit-transition: inherit;
+    transition: inherit;
+  }
+  header .aside-toggle span::before {
+    top: -6px;
+    width: 9px;
+  }
+  header .aside-toggle span::after {
+    bottom: -6px;
+    width: 16px;
+  }
+}
+
+@media (min-width: 1000px) {
+  header .aside-toggle {
+    display: none;
+  }
+}
+
+header .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 1000px) {
+  header .logo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 1000px) {
   header .logo img {
     width: 90px;
   }
@@ -377,7 +430,7 @@ header .search-form {
   width: 100%;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 999px) {
   header .search-form {
     display: none;
   }
@@ -521,18 +574,62 @@ aside a.active {
 @media (max-width: 1000px) {
   aside {
     position: absolute;
-    position: absolute;
     left: -200%;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
   }
-  aside .showAside {
+  aside.show-aside {
     left: 0;
   }
 }
 
 aside nav {
   padding-top: 39px;
+}
+
+@media (max-width: 1000px) {
+  aside nav .search-form {
+    position: relative;
+    width: 100%;
+    margin: 0 30px;
+    margin-bottom: 20px;
+    min-width: 100px;
+    max-width: 230px;
+  }
+  aside nav .search-form input, aside nav .search-form main.login-main .login-form input, main.login-main .login-form aside nav .search-form input {
+    height: 40px;
+  }
+  aside nav .search-form .search-button {
+    background: #39cdcc;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    width: 56px;
+    border: none;
+    padding: 0 13px;
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  aside nav .search-form {
+    display: none;
+  }
 }
 
 aside nav ul {
@@ -574,6 +671,7 @@ aside .switch-org,
 aside .logout,
 aside .version {
   padding: 0 30px;
+  color: #7b8db0;
 }
 
 aside .switch-org {
@@ -590,7 +688,18 @@ aside .switch-org span {
   padding: 10px;
 }
 
+aside .logout {
+  padding: 10px 30px;
+  margin-top: 49px;
+  margin-bottom: 20px;
+}
+
 aside .home a {
   margin-bottom: 0;
+}
+
+aside .version {
+  padding: 10px 30px;
+  margin-bottom: 120px;
 }
 /*# sourceMappingURL=style.css.map */
