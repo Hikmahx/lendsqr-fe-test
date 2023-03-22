@@ -1,10 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface SharedState {
+  showAside: boolean;
+}
+
+const initialState: SharedState = {
+  showAside: false,
+};
+
 const sharedSlice = createSlice({
   name: "shared",
-  initialState: {
-    showAside: false,
-  },
+  initialState,
   reducers: {
     asideToggle: (state, { payload }) => {
       state.showAside = payload;
