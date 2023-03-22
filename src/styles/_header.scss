@@ -51,12 +51,12 @@ header {
   .logo {
     display: flex;
     align-items: center;
+
+    img {
     @media (min-width: 1000px) {
       height: 30px;
     }
-    
     @media (max-width: 1000px) {
-      img {
         width: 90px;
       }
     }

@@ -412,7 +412,7 @@ header .logo {
 }
 
 @media (min-width: 1000px) {
-  header .logo {
+  header .logo img {
     height: 30px;
   }
 }
