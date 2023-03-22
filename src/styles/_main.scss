@@ -1,9 +1,56 @@
-main {
+main.dashboard-main {
   flex: 1 1 0%;
 
   padding: 30px;
 
   @media (min-width: 1000px) {
     padding: 60px;
+  }
+
+  h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 40px;
+    color: $dull-blue;
+  }
+  .cards {
+    @include flexCenter(column);
+    justify-content: space-between;
+    // flex-wrap: wrap;
+    gap: 13px;
+
+  @media (min-width: 1000px) {
+    @include flexCenter(row);
+  }
+    .card {
+      background: white;
+      width: 240px;
+      height: 160px;
+      border: 1px solid rgba(33, 63, 125, 0.06);
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      padding: 20px 30px;
+
+      h2 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: uppercase;
+        margin-top: 14px;
+        margin-bottom: 12px;
+        color: $dull-navy;
+      }
+
+      p {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: $dull-blue;
+      }
+    }
   }
 }

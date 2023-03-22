@@ -582,6 +582,9 @@ aside a.active {
   aside.show-aside {
     left: 0;
     width: 283px;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
   }
 }
 
@@ -705,7 +708,7 @@ aside .version {
   margin-bottom: 120px;
 }
 
-main {
+main.dashboard-main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
@@ -713,8 +716,85 @@ main {
 }
 
 @media (min-width: 1000px) {
-  main {
+  main.dashboard-main {
     padding: 60px;
   }
+}
+
+main.dashboard-main h1 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 40px;
+  color: #21407d;
+}
+
+main.dashboard-main .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 13px;
+}
+
+@media (min-width: 1000px) {
+  main.dashboard-main .cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+main.dashboard-main .cards .card {
+  background: white;
+  width: 240px;
+  height: 160px;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px 30px;
+}
+
+main.dashboard-main .cards .card h2 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 12px;
+  color: #7b8db0;
+}
+
+main.dashboard-main .cards .card p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #21407d;
 }
 /*# sourceMappingURL=style.css.map */

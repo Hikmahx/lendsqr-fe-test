@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Cards from "../../../components/Dashboard/Cards/Cards";
 
 const Users = () => {
   return (
-    <div>Users</div>
-  )
-}
+    <div className="users">
+      <h1>Users</h1>
+      <Cards />
+    </div>
+  );
+};
 
-export default Users
+export default Users;
