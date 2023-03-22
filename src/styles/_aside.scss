@@ -26,12 +26,14 @@ aside {
     //   width: 80px;
     // }
 
-    position: absolute;
+    position: relative;
     left: -200%;
     transition: all 150ms ease-in-out;
+    width: 0;
 
     &.show-aside {
       left: 0;
+      width: 283px;
     }
   }
   // .space-y-3 > :not([hidden]) ~ :not([hidden]) {

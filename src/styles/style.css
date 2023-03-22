@@ -573,13 +573,15 @@ aside a.active {
 
 @media (max-width: 1000px) {
   aside {
-    position: absolute;
+    position: relative;
     left: -200%;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
+    width: 0;
   }
   aside.show-aside {
     left: 0;
+    width: 283px;
   }
 }
 
