@@ -1,0 +1,114 @@
+.table-wrapper {
+  padding: 30px;
+  background: white;
+  border-radius: 4px;
+  overflow-x: auto;
+  width: 100%;
+  display: flex;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  margin-top: 40px;
+
+  table {
+    font-size: 14px;
+    line-height: 16px;
+    color: $dull-navy;
+    text-align: left;
+    table-layout: auto;
+    width: 100%;
+    // border-spacing: 35px 0;
+    border-collapse: collapse;
+    background: white;
+    border-color: inherit;
+    text-indent: 0;
+    // border-collapse: separate;
+    // border-spacing: 5em;
+
+    thead {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      display: flex;
+      align-items: flex-end;
+      text-transform: uppercase;
+      display: table-header-group;
+      // display: table;
+      table-layout: fixed;
+      width: 100%;
+
+      // tr {
+      //   border-collapse: separate;
+      //   border-spacing: 5em;
+      // }
+      th {
+        padding-bottom: 15px;
+        span {
+          @include flexCenter(row);
+          white-space: nowrap;
+          justify-content: left;
+
+          svg {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+    th,
+    td {
+      // border: ;
+      padding: 0 17.5px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    // tr {
+    //   border-bottom: rgba($grayish-blue, 10%);
+    // }
+
+    td {
+      white-space: nowrap;
+      padding: 22px 17.5px;
+    }
+
+    tbody {
+      tr {
+        &:not(:last-child) {
+          td {
+            border-bottom: rgba($grayish-blue, 0.2) 1px solid;
+          }
+        }
+      }
+
+      .status-pill {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 7px 13px;
+        border-radius: 9999px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .inactive {
+    background: rgba($grayish-blue, 0.06);
+    color: $grayish-blue;
+  }
+
+  .pending {
+    background: rgba(233, 178, 0, 0.06);
+    color: rgba(233, 178, 0, 1);
+  }
+
+  .blacklisted {
+    background: rgba(228, 3, 59, 0.06);
+    color: rgba(228, 3, 59, 1);
+  }
+
+  .active {
+    background: rgba(57, 205, 98, 0.06);
+    color: rgba(57, 205, 98, 1);
+  }
+}

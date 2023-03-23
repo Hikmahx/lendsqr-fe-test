@@ -712,12 +712,18 @@ main.dashboard-main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
+  position: -webkit-sticky;
+  position: sticky;
+  overflow: scroll;
   padding: 30px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 @media (min-width: 1000px) {
   main.dashboard-main {
     padding: 60px;
+    max-width: 1440px;
   }
 }
 
@@ -744,9 +750,6 @@ main.dashboard-main .cards {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   gap: 13px;
 }
 
@@ -765,6 +768,9 @@ main.dashboard-main .cards {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
@@ -796,5 +802,128 @@ main.dashboard-main .cards .card p {
   text-transform: uppercase;
   margin-bottom: 10px;
   color: #21407d;
+}
+
+.table-wrapper {
+  padding: 30px;
+  background: white;
+  border-radius: 4px;
+  overflow-x: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  margin-top: 40px;
+}
+
+.table-wrapper table {
+  font-size: 14px;
+  line-height: 16px;
+  color: #7b8db0;
+  text-align: left;
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-color: inherit;
+  text-indent: 0;
+}
+
+.table-wrapper table thead {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  text-transform: uppercase;
+  display: table-header-group;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-wrapper table thead th {
+  padding-bottom: 15px;
+}
+
+.table-wrapper table thead th span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  white-space: nowrap;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.table-wrapper table thead th span svg {
+  margin-left: 10px;
+}
+
+.table-wrapper table th,
+.table-wrapper table td {
+  padding: 0 17.5px;
+}
+
+.table-wrapper table th:first-child,
+.table-wrapper table td:first-child {
+  padding-left: 0;
+}
+
+.table-wrapper table th:last-child,
+.table-wrapper table td:last-child {
+  padding-right: 0;
+}
+
+.table-wrapper table td {
+  white-space: nowrap;
+  padding: 22px 17.5px;
+}
+
+.table-wrapper table tbody tr:not(:last-child) td {
+  border-bottom: rgba(84, 95, 125, 0.2) 1px solid;
+}
+
+.table-wrapper table tbody .status-pill {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 7px 13px;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.table-wrapper .inactive {
+  background: rgba(84, 95, 125, 0.06);
+  color: #545f7d;
+}
+
+.table-wrapper .pending {
+  background: rgba(233, 178, 0, 0.06);
+  color: #e9b200;
+}
+
+.table-wrapper .blacklisted {
+  background: rgba(228, 3, 59, 0.06);
+  color: #e4033b;
+}
+
+.table-wrapper .active {
+  background: rgba(57, 205, 98, 0.06);
+  color: #39cd62;
 }
 /*# sourceMappingURL=style.css.map */
