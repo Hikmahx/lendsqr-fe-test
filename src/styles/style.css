@@ -747,6 +747,7 @@ main.dashboard-main {
   padding: 30px;
   max-width: 500px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 1023px) {
@@ -856,7 +857,11 @@ main.dashboard-main .cards .card p {
   color: #21407d;
 }
 
-.table-wrapper {
+.table-container {
+  position: relative;
+}
+
+.table-container .table-wrapper {
   padding: 30px;
   background: white;
   border-radius: 4px;
@@ -870,7 +875,7 @@ main.dashboard-main .cards .card p {
   margin-top: 40px;
 }
 
-.table-wrapper table {
+.table-container .table-wrapper table {
   font-size: 14px;
   line-height: 16px;
   color: #7b8db0;
@@ -883,7 +888,7 @@ main.dashboard-main .cards .card p {
   text-indent: 0;
 }
 
-.table-wrapper table thead {
+.table-container .table-wrapper table thead {
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
@@ -899,11 +904,11 @@ main.dashboard-main .cards .card p {
   width: 100%;
 }
 
-.table-wrapper table thead th {
+.table-container .table-wrapper table thead th {
   padding-bottom: 15px;
 }
 
-.table-wrapper table thead th span {
+.table-container .table-wrapper table thead th span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -923,35 +928,35 @@ main.dashboard-main .cards .card p {
           justify-content: left;
 }
 
-.table-wrapper table thead th span svg {
+.table-container .table-wrapper table thead th span svg {
   margin-left: 10px;
 }
 
-.table-wrapper table th,
-.table-wrapper table td {
+.table-container .table-wrapper table th,
+.table-container .table-wrapper table td {
   padding: 0 17.5px;
 }
 
-.table-wrapper table th:first-child,
-.table-wrapper table td:first-child {
+.table-container .table-wrapper table th:first-child,
+.table-container .table-wrapper table td:first-child {
   padding-left: 0;
 }
 
-.table-wrapper table th:last-child,
-.table-wrapper table td:last-child {
+.table-container .table-wrapper table th:last-child,
+.table-container .table-wrapper table td:last-child {
   padding-right: 0;
 }
 
-.table-wrapper table td {
+.table-container .table-wrapper table td {
   white-space: nowrap;
   padding: 22px 17.5px;
 }
 
-.table-wrapper table tbody tr:not(:last-child) td {
+.table-container .table-wrapper table tbody tr:not(:last-child) td {
   border-bottom: rgba(84, 95, 125, 0.2) 1px solid;
 }
 
-.table-wrapper table tbody .status-pill {
+.table-container .table-wrapper table tbody .status-pill {
   font-size: 14px;
   line-height: 16px;
   padding: 7px 13px;
@@ -959,22 +964,22 @@ main.dashboard-main .cards .card p {
   text-transform: capitalize;
 }
 
-.table-wrapper .inactive {
+.table-container .table-wrapper .inactive {
   background: rgba(84, 95, 125, 0.06);
   color: #545f7d;
 }
 
-.table-wrapper .pending {
+.table-container .table-wrapper .pending {
   background: rgba(233, 178, 0, 0.06);
   color: #e9b200;
 }
 
-.table-wrapper .blacklisted {
+.table-container .table-wrapper .blacklisted {
   background: rgba(228, 3, 59, 0.06);
   color: #e4033b;
 }
 
-.table-wrapper .active {
+.table-container .table-wrapper .active {
   background: rgba(57, 205, 98, 0.06);
   color: #39cd62;
 }
@@ -1131,5 +1136,115 @@ main.dashboard-main .cards .card p {
 .pagination-wrapper .pagination-nav .pagination .pagination-link-active {
   font-weight: 500;
   color: #7b8db0;
+}
+
+span .filter {
+  position: absolute;
+  width: 270px;
+  height: 600px;
+  left: 0;
+  top: 60px;
+  background: white;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px 30px;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1023px) {
+  span.org .filter {
+    left: 15px;
+  }
+  span.user .filter {
+    left: 170px;
+  }
+  span.email .filter {
+    left: 300px;
+  }
+  span.number .filter, span.date .filter, span.status .filter {
+    left: auto;
+    right: 15px;
+  }
+}
+
+.filter-form .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.filter-form .input-wrapper label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  color: #7b8db0;
+  margin-bottom: 6px;
+}
+
+.filter-form .input-wrapper input, .filter-form .input-wrapper main.login-main .login-form input, main.login-main .login-form .filter-form .input-wrapper input,
+.filter-form .input-wrapper select {
+  width: 100%;
+  padding: 12px 20px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.15);
+  border-radius: 8px;
+  color: #545f7d;
+}
+
+.filter-form .input-wrapper input:focus,
+.filter-form .input-wrapper select:focus {
+  border: 2px solid rgba(33, 64, 125, 0.6);
+}
+
+.filter-form .input-wrapper input::-webkit-input-placeholder,
+.filter-form .input-wrapper select::-webkit-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+.filter-form .input-wrapper input:-ms-input-placeholder,
+.filter-form .input-wrapper select:-ms-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+.filter-form .input-wrapper input::-ms-input-placeholder,
+.filter-form .input-wrapper select::-ms-input-placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+.filter-form .input-wrapper input::placeholder,
+.filter-form .input-wrapper select::placeholder {
+  color: rgba(84, 95, 125, 0.6);
+}
+
+.filter-form .input-wrapper select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.filter-form .input-wrapper .select-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.filter-form .input-wrapper .select-wrapper svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  right: 22px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,95 @@
+span {
+  .filter {
+    position: absolute;
+    width: 270px;
+    height: 600px;
+    left: 0;
+    top: 60px;
+    background: white;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 20px 30px;
+    z-index: 10;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1023px) {
+    &.org {
+      .filter {
+        left: 15px;
+      }
+    }
+    &.user {
+      .filter {
+        left: 170px;
+      }
+    }
+    &.email {
+      .filter {
+        left: 300px;
+      }
+    }
+    &.number,
+    &.date,
+    &.status {
+      .filter {
+        left: auto;
+        right: 15px;
+      }
+    }
+  }
+}
+
+.filter-form {
+  .input-wrapper {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: capitalize;
+      color: $dull-navy;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      height: 50px;
+      background: #ffffff;
+      border: 1px solid rgba(84, 95, 125, 0.15);
+      border-radius: 8px;
+      color: $grayish-blue;
+
+      &:focus {
+        border: 2px solid rgba(33, 64, 125, 0.6);
+      }
+
+      &::placeholder {
+        color: rgba($grayish-blue, 0.6);
+      }
+    }
+
+    select {
+      appearance: none;
+    }
+
+    .select-wrapper {
+      width: 100%;
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        right: 22px;
+      }
+    }
+  }
+}
