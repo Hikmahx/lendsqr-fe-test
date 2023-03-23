@@ -139,7 +139,7 @@ main.login-main {
   font-family: "Avenir Next LT Pro", sans-serif;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   main.login-main {
     max-height: 100vh;
     overflow: hidden;
@@ -167,7 +167,7 @@ main.login-main .login-form {
   height: 100%;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   main.login-main .login-bg,
   main.login-main .login-form {
     -webkit-box-flex: 1;
@@ -180,7 +180,7 @@ main.login-main .login-bg {
   padding: 106px 67px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   main.login-main .login-bg {
     position: absolute;
   }
@@ -207,7 +207,7 @@ main.login-main .login-form {
   position: relative;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   main.login-main .login-form {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -249,7 +249,7 @@ main.login-main .login-form input {
   margin-bottom: 24px;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   main.login-main .login-form {
     padding-top: 24.5vh;
   }
@@ -345,6 +345,7 @@ header {
   background: #ffffff;
   -webkit-box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
           box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -361,10 +362,37 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 30px;
 }
 
-@media (max-width: 1000px) {
+header .header-wrapper {
+  width: 100%;
+  max-width: 811px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (min-width: 1023px) {
+  header .header-wrapper {
+    max-width: 1280px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 1023px) {
   header .aside-toggle {
     margin-right: 16px;
   }
@@ -396,7 +424,7 @@ header {
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
   header .aside-toggle {
     display: none;
   }
@@ -411,13 +439,13 @@ header .logo {
           align-items: center;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   header .logo img {
     height: 30px;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   header .logo img {
     width: 90px;
   }
@@ -428,11 +456,12 @@ header .search-form {
   min-width: 300px;
   max-width: 400px;
   width: 100%;
+  display: none;
 }
 
-@media (max-width: 999px) {
+@media (min-width: 1023px) {
   header .search-form {
-    display: none;
+    display: block;
   }
 }
 
@@ -503,7 +532,7 @@ header nav ul .notification {
   margin-right: 33.16px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   header nav ul .notification {
     margin: 0 20px;
     width: 90%;
@@ -535,7 +564,7 @@ header nav ul .user-profile img {
   border-radius: 100%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   header nav ul .user-profile img {
     width: 30px;
     height: 30px;
@@ -571,7 +600,7 @@ aside a.active {
   border-left: 3px solid #39cdcc;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 767px) {
   aside {
     position: relative;
     left: -200%;
@@ -592,7 +621,7 @@ aside nav {
   padding-top: 39px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   aside nav .search-form {
     position: relative;
     width: 100%;
@@ -631,7 +660,7 @@ aside nav {
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   aside nav .search-form {
     display: none;
   }
@@ -720,10 +749,10 @@ main.dashboard-main {
   margin: 0 auto;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   main.dashboard-main {
     padding: 60px;
-    max-width: 1440px;
+    max-width: 1280px;
   }
 }
 
@@ -753,7 +782,7 @@ main.dashboard-main .cards {
   gap: 13px;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1023px) {
   main.dashboard-main .cards {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -771,18 +800,41 @@ main.dashboard-main .cards {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 
 main.dashboard-main .cards .card {
   background: white;
-  width: 240px;
+  width: 100%;
   height: 160px;
   border: 1px solid rgba(33, 63, 125, 0.06);
   -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
           box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   padding: 20px 30px;
+  overflow: hidden;
+}
+
+@media (min-width: 1023px) {
+  main.dashboard-main .cards .card {
+    width: 48%;
+  }
+}
+
+@media (min-width: 1300px) {
+  main.dashboard-main .cards .card {
+    width: 23%;
+    height: 165px;
+  }
+}
+
+@media (min-width: 1439px) {
+  main.dashboard-main .cards .card {
+    height: 160px;
+    width: 23.15%;
+  }
 }
 
 main.dashboard-main .cards .card h2 {
@@ -903,7 +955,7 @@ main.dashboard-main .cards .card p {
   font-size: 14px;
   line-height: 16px;
   padding: 7px 13px;
-  border-radius: 9999px;
+  border-radius: 9767px;
   text-transform: capitalize;
 }
 

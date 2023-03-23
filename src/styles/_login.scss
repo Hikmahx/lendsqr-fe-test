@@ -3,9 +3,9 @@ main.login-main {
   @include flexCenter(column);
   font-family: "Avenir Next LT Pro", sans-serif;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1023px) {
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1023px) {
     max-height: 100vh;
     overflow: hidden;
     @include flexCenter(row);
@@ -18,14 +18,14 @@ main.login-main {
     min-height: 100vh;
     height: 100%;
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1023px) {
       flex: 1 1 0%;
     }
   }
 
   .login-bg {
     padding: 106px 67px;
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
       position: absolute;
     }
     div {
@@ -47,7 +47,7 @@ main.login-main {
     box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
     padding: 0 100px;
     position: relative;
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
       @include flexCenter(column);
       background: rgba(255, 255, 255, 0.95);
       max-width: 400px;
@@ -70,7 +70,7 @@ main.login-main {
       @extend input;
       margin-bottom: 24px;
     }
-    @media (min-width: 1000px) {
+    @media (min-width: 1023px) {
       padding-top: 24.5vh;
     }
 

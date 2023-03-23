@@ -19,7 +19,7 @@ aside {
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 767px) {
     // width: 56px;
 
     // .showAside {
@@ -47,7 +47,7 @@ aside {
     padding-top: 39px;
 
     .search-form {
-      @media (max-width: 1000px) {
+      @media (max-width: 1023px) {
         position: relative;
         width: 100%;
         margin: 0 30px;
@@ -72,7 +72,7 @@ aside {
           border-radius: 0 8px 8px 0;
         }
       }
-      @media (min-width: 1000px) {
+      @media (min-width: 1023px) {
         display: none;
       }
     }

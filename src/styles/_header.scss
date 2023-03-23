@@ -3,13 +3,25 @@ header {
   height: 100px;
   background: #ffffff;
   box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  padding: 30px;
   @include flexCenter(row);
   justify-content: space-between;
-  padding: 30px;
-  // align-items: stretch;
+
+  .header-wrapper{
+    width: 100%;
+    max-width: 811px;
+    @include flexCenter(row);
+    justify-content: space-between;
+    // align-items: stretch;
+
+    @media (min-width: 1023px) {
+    max-width: 1280px;
+    margin: auto;
+    }
+  }
 
   .aside-toggle {
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
       margin-right: 16px;
       span {
         width: 10px;
@@ -43,7 +55,7 @@ header {
       }
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 768px) {
       display: none;
     }
   }
@@ -53,10 +65,10 @@ header {
     align-items: center;
 
     img {
-    @media (min-width: 1000px) {
-      height: 30px;
-    }
-    @media (max-width: 1000px) {
+      @media (min-width: 1023px) {
+        height: 30px;
+      }
+      @media (max-width: 1023px) {
         width: 90px;
       }
     }
@@ -67,9 +79,10 @@ header {
     min-width: 300px;
     max-width: 400px;
     width: 100%;
+    display: none;
 
-    @media (max-width: 999px) {
-      display: none;
+    @media (min-width: 1023px) {
+      display: block;
     }
 
     input {
@@ -110,7 +123,7 @@ header {
         margin-left: 50.16px;
         margin-right: 33.16px;
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1023px) {
           margin: 0 20px;
           width: 90%;
 
@@ -127,7 +140,7 @@ header {
           width: 48px;
           border-radius: 100%;
 
-          @media (max-width: 1000px) {
+          @media (max-width: 1023px) {
             width: 30px;
             height: 30px;
           }
