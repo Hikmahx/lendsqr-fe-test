@@ -978,4 +978,158 @@ main.dashboard-main .cards .card p {
   background: rgba(57, 205, 98, 0.06);
   color: #39cd62;
 }
+
+.pagination-wrapper {
+  margin-top: 27px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 1023px) {
+  .pagination-wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.pagination-wrapper .show-quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination-wrapper .show-quantity span,
+.pagination-wrapper .show-quantity select {
+  font-size: 14px;
+  line-height: 16px;
+  color: #7b8db0;
+  font-family: "Work Sans", sans-serif;
+}
+
+.pagination-wrapper .show-quantity .select-quantity {
+  position: relative;
+}
+
+.pagination-wrapper .show-quantity .select-quantity .quantity {
+  border: none;
+  background: rgba(123, 141, 176, 0.1);
+  border-radius: 4px;
+  width: 80px;
+  height: 30px;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 7px 12px;
+  margin: 0 10px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.pagination-wrapper .show-quantity .select-quantity svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  right: 22px;
+}
+
+.pagination-wrapper .pagination-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pagination-wrapper .pagination-nav .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: rgba(123, 141, 176, 0.6);
+  font-size: 16px;
+  line-height: 19px;
+  gap: 20px;
+  margin-top: 16px;
+  font-weight: 400;
+}
+
+.pagination-wrapper .pagination-nav .pagination nav {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination-wrapper .pagination-nav .pagination li.previous a,
+.pagination-wrapper .pagination-nav .pagination li.next a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 4px;
+  padding: 6.4px 8.7px;
+  background: rgba(123, 141, 176, 0.1);
+  width: 24px;
+  height: 24px;
+}
+
+.pagination-wrapper .pagination-nav .pagination .pagination-link-disabled {
+  font-weight: 400;
+}
+
+.pagination-wrapper .pagination-nav .pagination .pagination-link-active {
+  font-weight: 500;
+  color: #7b8db0;
+}
 /*# sourceMappingURL=style.css.map */
