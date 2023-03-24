@@ -133,7 +133,7 @@ const Table = () => {
                           <td className="org">{detail.orgName}</td>
                           <td>{detail.userName}</td>
                           <td className="email">{detail.email}</td>
-                          <td>{detail.phoneNumber}</td>
+                          <td>{detail.phoneNumber.replace(/[^0-9 | / | - | \s]/g, '')}</td>
                           <td>
                             <>
                               {new Date(detail.createdAt).toLocaleString(
