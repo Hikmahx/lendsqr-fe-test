@@ -121,6 +121,21 @@ main.login-main .login-form input[type="password"]::placeholder {
   color: rgba(84, 95, 125, 0.6);
 }
 
+.loading {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 40px 0;
+}
+
+.error-message {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 40px 0;
+  min-height: 30vh;
+  text-align: center;
+  white-space: nowrap;
+}
+
 main.login-main {
   min-height: 100vh;
   display: -webkit-box;

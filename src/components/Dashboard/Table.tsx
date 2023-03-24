@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Filter from "../dropdown/Filter";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
+
 const Table = () => {
-  // const [showFilter, setshowFilter] = useState(false);
   const [text, setText] = useState<string | null | undefined>();
+  const { details, loading, errMsg, error } = useSelector(
+    (state: RootState) => state.details
+  );
 
   const addFilterDiv = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     event.stopPropagation();
@@ -62,108 +67,112 @@ const Table = () => {
     <div className="table-container">
       <div className="table-wrapper">
         <table>
-          <thead>
-            <tr className="">
-              <th className="" data-key="org">
-                <span className={text === "organization" ? "org" : ""}>
-                  organization
-                  <FilterIcon />
-                  {text === "organization" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="" data-key="user">
-                <span className={text === "username" ? "user" : ""}>
-                  username
-                  <FilterIcon />
-                  {text === "username" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="" data-key="email">
-                <span className={text === "email" ? "email" : ""}>
-                  email
-                  <FilterIcon />
-                  {text === "email" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="" data-key="number">
-                <span className={text === "phone number" ? "number" : ""}>
-                  phone number
-                  <FilterIcon />
-                  {text === "phone number" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="" data-key="date">
-                <span className={text === "date joined" ? "date" : ""}>
-                  date joined
-                  <FilterIcon />
-                  {text === "date joined" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="" data-key="status">
-                <span className={text === "status" ? "status" : ""}>
-                  status
-                  <FilterIcon />
-                  {text === "status" ? <Filter /> : ""}
-                </span>
-              </th>
-              <th className="">
-                <span className=""></span>
-              </th>
-            </tr>
-          </thead>
+          {!error && (
+            <thead>
+              <tr className="">
+                <th className="" data-key="org">
+                  <span className={text === "organization" ? "org" : ""}>
+                    organization
+                    <FilterIcon />
+                    {text === "organization" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="" data-key="user">
+                  <span className={text === "username" ? "user" : ""}>
+                    username
+                    <FilterIcon />
+                    {text === "username" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="" data-key="email">
+                  <span className={text === "email" ? "email" : ""}>
+                    email
+                    <FilterIcon />
+                    {text === "email" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="" data-key="number">
+                  <span className={text === "phone number" ? "number" : ""}>
+                    phone number
+                    <FilterIcon />
+                    {text === "phone number" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="" data-key="date">
+                  <span className={text === "date joined" ? "date" : ""}>
+                    date joined
+                    <FilterIcon />
+                    {text === "date joined" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="" data-key="status">
+                  <span className={text === "status" ? "status" : ""}>
+                    status
+                    <FilterIcon />
+                    {text === "status" ? <Filter /> : ""}
+                  </span>
+                </th>
+                <th className="">
+                  <span className=""></span>
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr>
-              <td>Lendsqr</td>
-              <td>Adedeji</td>
-              <td>adedeji@lendsqr.com</td>
-              <td>08078903721</td>
-              <td>May 15, 2020 10:00 AM</td>
-              <td>
-                <span className="status-pill inactive">inactive</span>
-              </td>
-              <td>
-                <ColVertical />
-              </td>
-            </tr>
-            <tr>
-              <td>Lendsqr</td>
-              <td>Adedeji</td>
-              <td>adedeji@lendsqr.com</td>
-              <td>08078903721</td>
-              <td>May 15, 2020 10:00 AM</td>
-              <td>
+            <>
+              {!error ? (
+                <>
+                  {loading ? (
+                    <>
+                      <p className="loading">Loading...</p>
+                    </>
+                  ) : (
+                    <>
+                      {details.map((detail) => (
+                        <tr>
+                          <td>{detail.orgName}</td>
+                          <td>{detail.userName}</td>
+                          <td>{detail.email}</td>
+                          <td>{detail.phoneNumber}</td>
+                          <td>
+                            <>
+                              `$
+                              {new Date(detail.createdAt).toLocaleDateString(
+                                "en-GB"
+                              )}
+                              `
+                            </>
+                          </td>
+                          <td>
+                            <span className="status-pill inactive">
+                              inactive
+                            </span>
+                          </td>
+                          <td>
+                            <ColVertical />
+                          </td>
+                        </tr>
+                      ))}
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p
+                    style={{
+                      
+                    }}
+                    className="error-message"
+                  >
+                    {errMsg}.
+                  </p>
+                </>
+              )}
+            </>
+            {/* <span className="status-pill inactive">inactive</span>
                 <span className="status-pill pending">pending</span>
-              </td>
-              <td>
-                <ColVertical />
-              </td>
-            </tr>
-            <tr>
-              <td>Lendsqr</td>
-              <td>Adedeji</td>
-              <td>adedeji@lendsqr.com</td>
-              <td>08078903721</td>
-              <td>May 15, 2020 10:00 AM</td>
-              <td>
                 <span className="status-pill blacklisted">blacklisted</span>
-              </td>
-              <td>
-                <ColVertical />
-              </td>
-            </tr>
-            <tr>
-              <td>Lendsqr</td>
-              <td>Adedeji</td>
-              <td>adedeji@lendsqr.com</td>
-              <td>08078903721</td>
-              <td>May 15, 2020 10:00 AM</td>
-              <td>
-                <span className="status-pill active">active</span>
-              </td>
-              <td>
-                <ColVertical />
-              </td>
-            </tr>
+                <span className="status-pill active">active</span> */}
           </tbody>
         </table>
       </div>

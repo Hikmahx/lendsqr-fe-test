@@ -116,6 +116,21 @@ input[type="password"] {
   }
 }
 
+.loading {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 40px 0;
+}
+
+.error-message {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 40px 0;
+  min-height: 30vh;
+  text-align: center;
+  white-space: nowrap;
+}
+
 @import "./login";
 @import "./dashboard";
 @import "./header";

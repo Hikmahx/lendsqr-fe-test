@@ -28,28 +28,28 @@ export const loginUser = createAsyncThunk<User, string>(
   }
 );
 
-export const getUserDetails = createAsyncThunk(
-  "user/getUserDetails",
-  async (arg, { getState, rejectWithValue }) => {
-    try {
-      // const { auth } = getState();
-      // const config = {
-      //   headers: {
-      //     // 'x-auth-token': auth.authToken,
-      //     Authorization: "Bearer " + auth.authToken,
-      //   },
-      // };
-      // const { data } = await axios.get(
-      //   "https://gbezhon-api.onrender.com/user/details",
-      //   config
-      // );
-      // return data.user;
-    } catch (err) {
-      console.log("error", err);
-      return rejectWithValue(err);
-    }
-  }
-);
+// export const getUserDetails = createAsyncThunk(
+//   "user/getUserDetails",
+//   async (arg, { getState, rejectWithValue }) => {
+//     try {
+//       // const { auth } = getState();
+//       // const config = {
+//       //   headers: {
+//       //     // 'x-auth-token': auth.authToken,
+//       //     Authorization: "Bearer " + auth.authToken,
+//       //   },
+//       // };
+//       // const { data } = await axios.get(
+//       //   "https://gbezhon-api.onrender.com/user/details",
+//       //   config
+//       // );
+//       // return data.user;
+//     } catch (err) {
+//       console.log("error", err);
+//       return rejectWithValue(err);
+//     }
+//   }
+// );
 
 // initialize authToken from local storage
 const authToken = localStorage.getItem("authToken")
@@ -117,23 +117,23 @@ export const authSlice = createSlice({
       //   state.error = action.error
       // }
     });
-    builder.addCase(getUserDetails.pending, (state, action) => {
-      state.loading = true;
-      state.error = false;
-    });
-    builder.addCase(getUserDetails.fulfilled, (state, action) => {
-      state.loading = false;
-      // state.userInfo = action.payload;
-      state.errMsg = "";
-    });
-    builder.addCase(getUserDetails.rejected, (state, action) => {
-      state.loading = false;
-      state.error = true;
-      // state.errMsg = action.payload.response
-      //   ? action.payload.response.data.message
-      //   : action.payload.message;
-      // state.errMsg = action.payload || action.error.message
-    });
+    // builder.addCase(getUserDetails.pending, (state, action) => {
+    //   state.loading = true;
+    //   state.error = false;
+    // });
+    // builder.addCase(getUserDetails.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   // state.userInfo = action.payload;
+    //   state.errMsg = "";
+    // });
+    // builder.addCase(getUserDetails.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.error = true;
+    //   // state.errMsg = action.payload.response
+    //   //   ? action.payload.response.data.message
+    //   //   : action.payload.message;
+    //   // state.errMsg = action.payload || action.error.message
+    // });
   },
 });
 export const { removeError, logout } = authSlice.actions;
