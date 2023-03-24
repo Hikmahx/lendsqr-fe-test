@@ -13,7 +13,7 @@
     table {
       font-size: 14px;
       line-height: 16px;
-      color: $dull-navy;
+      color: $grayish-blue;
       text-align: left;
       table-layout: auto;
       width: 100%;
@@ -81,6 +81,15 @@
           &:not(:last-child) {
             td {
               border-bottom: rgba($grayish-blue, 0.2) 1px solid;
+            }
+          }
+          td {
+            &.org {
+              text-transform: capitalize;
+            }
+
+            &.email {
+              text-transform: lowercase;
             }
           }
         }

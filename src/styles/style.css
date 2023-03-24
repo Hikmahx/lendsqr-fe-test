@@ -893,7 +893,7 @@ main.dashboard-main .cards .card p {
 .table-container .table-wrapper table {
   font-size: 14px;
   line-height: 16px;
-  color: #7b8db0;
+  color: #545f7d;
   text-align: left;
   table-layout: auto;
   width: 100%;
@@ -969,6 +969,14 @@ main.dashboard-main .cards .card p {
 
 .table-container .table-wrapper table tbody tr:not(:last-child) td {
   border-bottom: rgba(84, 95, 125, 0.2) 1px solid;
+}
+
+.table-container .table-wrapper table tbody tr td.org {
+  text-transform: capitalize;
+}
+
+.table-container .table-wrapper table tbody tr td.email {
+  text-transform: lowercase;
 }
 
 .table-container .table-wrapper table tbody .status-pill {

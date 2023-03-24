@@ -130,17 +130,23 @@ const Table = () => {
                     <>
                       {details.map((detail) => (
                         <tr>
-                          <td>{detail.orgName}</td>
+                          <td className="org">{detail.orgName}</td>
                           <td>{detail.userName}</td>
-                          <td>{detail.email}</td>
+                          <td className="email">{detail.email}</td>
                           <td>{detail.phoneNumber}</td>
                           <td>
                             <>
-                              `$
-                              {new Date(detail.createdAt).toLocaleDateString(
-                                "en-GB"
+                              {new Date(detail.createdAt).toLocaleString(
+                                "en-US",
+                                {
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "numeric",
+                                  hour: "numeric",
+                                  minute: "numeric",
+                                  hour12: true,
+                                }
                               )}
-                              `
                             </>
                           </td>
                           <td>
@@ -158,12 +164,7 @@ const Table = () => {
                 </>
               ) : (
                 <>
-                  <p
-                    style={{
-                      
-                    }}
-                    className="error-message"
-                  >
+                  <p style={{}} className="error-message">
                     {errMsg}.
                   </p>
                 </>
