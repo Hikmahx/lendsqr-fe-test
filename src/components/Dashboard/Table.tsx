@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Filter from "../dropdown/Filter";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
+import UserQuery from "../dropdown/UserQuery";
 
 const Table = () => {
   const [text, setText] = useState<string | null | undefined>();
+  const [colId, setColId] = useState<string | null | undefined>();
   const { details, loading, errMsg, error } = useSelector(
     (state: RootState) => state.details
   );
@@ -17,9 +19,27 @@ const Table = () => {
         : (event.target as Element).parentNode?.parentNode?.textContent;
 
     setText(eventText);
+    setColId("");
+
     // setshowFilter()
   };
-  console.log(text);
+
+  const addDropDown = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    event.stopPropagation();
+    let eventId =
+      (event.target as Element).tagName === "svg"
+        ? (event.target as Element).parentElement?.id
+        : // : "";
+          (event.target as Element).parentElement?.parentElement?.id;
+
+    setColId(`${eventId}`);
+    console.log(event.target as Element);
+    setText("");
+  };
+
+  const hideDropDown = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    console.log("double-click");
+  };
 
   const FilterIcon = () => {
     return (
@@ -42,6 +62,8 @@ const Table = () => {
   const ColVertical = () => {
     return (
       <svg
+        onClick={(e) => addDropDown(e)}
+        onDoubleClick={(e) => hideDropDown(e)}
         width="20"
         height="20"
         viewBox="0 0 20 20"
@@ -128,12 +150,17 @@ const Table = () => {
                     </>
                   ) : (
                     <>
-                      {details.map((detail) => (
-                        <tr>
+                      {details.map((detail, index) => (
+                        <tr key={detail.id}>
                           <td className="org">{detail.orgName}</td>
                           <td>{detail.userName}</td>
                           <td className="email">{detail.email}</td>
-                          <td>{detail.phoneNumber.replace(/[^0-9 | / | - | \s]/g, '')}</td>
+                          <td>
+                            {detail.phoneNumber.replace(
+                              /[^0-9 | / | - | \s]/g,
+                              ""
+                            )}
+                          </td>
                           <td>
                             <>
                               {new Date(detail.createdAt).toLocaleString(
@@ -154,8 +181,9 @@ const Table = () => {
                               inactive
                             </span>
                           </td>
-                          <td>
+                          <td id={detail.id} className="relative">
                             <ColVertical />
+                            {colId === `${detail.id}` ? <UserQuery /> : ""}
                           </td>
                         </tr>
                       ))}

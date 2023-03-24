@@ -1270,4 +1270,41 @@ span .filter {
   height: 100%;
   right: 22px;
 }
+
+.user-query {
+  position: absolute;
+  width: 180px;
+  height: 130px;
+  right: 15px;
+  top: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  color: #545f7d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-query a:not(:last-child),
+.user-query div:not(:last-child) {
+  color: #545f7d;
+  margin-bottom: 20px;
+}
+
+.user-query span {
+  margin-left: 10px;
+}
+
+.user-query div {
+  z-index: 10;
+  background: white;
+}
 /*# sourceMappingURL=style.css.map */

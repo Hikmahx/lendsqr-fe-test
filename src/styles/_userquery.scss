@@ -1,0 +1,30 @@
+.user-query {
+  position: absolute;
+  width: 180px;
+  height: 130px;
+  right: 15px;
+  top: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  color: $grayish-blue;
+  display: flex;
+  flex-direction: column;
+
+  a,
+  div {
+    &:not(:last-child) {
+      color: $grayish-blue;
+      margin-bottom: 20px;
+    }
+  }
+  span {
+    margin-left: 10px;
+  }
+  div {
+    z-index: 10;
+    background: white;
+  }
+}
