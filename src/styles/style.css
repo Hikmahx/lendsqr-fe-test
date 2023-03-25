@@ -971,6 +971,10 @@ main.dashboard-main .cards .card p {
   border-bottom: rgba(84, 95, 125, 0.2) 1px solid;
 }
 
+.table-container .table-wrapper table tbody tr td .col-dropdown svg {
+  cursor: pointer;
+}
+
 .table-container .table-wrapper table tbody tr td.org {
   text-transform: capitalize;
 }
@@ -1291,6 +1295,16 @@ span .filter {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.user-query a,
+.user-query div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .user-query a:not(:last-child),

@@ -20,6 +20,7 @@ const MyRoutes = () => {
     <Routes>
       <Route path="dashboard" element={<DashBoard />}>
         <Route path="" element={<Users />} />
+        <Route path="users" element={<Users />} />
         <Route path="users/:id" element={<UserDetails />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserQuery = () => {
+interface Props {
+  id: string;
+}
+
+const UserQuery = ({ id }: Props) => {
   return (
     <div className="user-query">
-      <Link to="">
+      <Link to={`/dashboard/users/${id}`}>
         <svg
           width="16"
           height="12"
