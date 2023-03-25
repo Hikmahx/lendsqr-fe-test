@@ -1,23 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import user from "../../assets/user/user.png";
 import { useDispatch, useSelector } from "react-redux";
 import { asideToggle } from "../../redux/reducers/sharedSlice";
 import { RootState } from "../../redux/store";
 import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../redux/reducers/authSlice";
 const logo: string = require("../../assets/logo/logo.svg").default;
 
 const Header = () => {
   const dispatch = useDispatch();
   const { showAside } = useSelector((state: RootState) => state.shared);
-
   const { storedUserInfo } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
+
+  const [showLogout, setShowLogout] = useState(false);
 
   useEffect(() => {
     // RETURN TO LOGIN PAGE IF NO USER IS LOGGED IN
     storedUserInfo.length === 0 && navigate("/");
     // eslint-disable-next-line
-  }, []);
+  }, [storedUserInfo]);
 
   return (
     <header>
@@ -89,7 +91,7 @@ const Header = () => {
                 </svg>
               </span>
             </li>
-            <li className="user-profile">
+            <li className="user-profile relative">
               <img src={user} alt="user icon" className="" />
               <p className="username" style={{ textTransform: "capitalize" }}>
                 {storedUserInfo.map((user) => (
@@ -97,6 +99,8 @@ const Header = () => {
                 ))}
               </p>
               <svg
+                style={{ cursor: "pointer " }}
+                onClick={() => setShowLogout(!showLogout)}
                 width="8"
                 height="5"
                 viewBox="0 0 8 5"
@@ -110,6 +114,29 @@ const Header = () => {
                   fill="#213F7D"
                 />
               </svg>
+
+              {showLogout && (
+                <div style={{ cursor: "pointer " }} className="logout" onClick={() => dispatch(logout())}>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M 4.6 16 H 2 C 1.2 16 0.4 15.7 -0.1 15.1 C -0.7 14.6 -1 13.8 -1 13 L -1 7 C -1 6.2 -0.7 5.4 -0.1 4.9 C 0.4 4.3 1.2 4 2 4 H 4.6 C 4.7 4 4.8 4 4.9 4.1 C 5 4.2 5 4.3 5 4.4 V 5.6 C 5 5.7 5 5.8 4.9 5.9 C 4.8 6 4.7 6 4.6 6 H 2 C 1.7 6 1.5 6.1 1.3 6.3 C 1.1 6.5 1 6.7 1 7 V 13 C 1 13.3 1.1 13.5 1.3 13.7 C 1.5 13.9 1.7 14 2 14 H 4.6 C 4.7 14 4.8 14 4.9 14.1 C 5 14.2 5 14.3 5 14.4 V 15.6 C 5 15.7 5 15.8 4.9 15.9 C 4.8 16 4.7 16 4.6 16 Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M 10 4.8 L 14.8 9.5 C 14.8 9.5 14.9 9.6 14.9 9.7 C 15 9.8 15 9.9 15 10 C 15 10.1 15 10.2 14.9 10.3 C 14.9 10.4 14.8 10.5 14.8 10.5 L 10 15.2 C 9.9 15.4 9.7 15.5 9.5 15.5 C 9.3 15.5 9.1 15.4 9 15.2 L 8.3 14.6 C 8.2 14.5 8.2 14.4 8.1 14.3 C 8.1 14.2 8.1 14.1 8.1 14 C 8.1 13.9 8.1 13.8 8.1 13.7 C 8.2 13.6 8.2 13.5 8.3 13.5 L 10.7 11.3 H 4.8 C 4.7 11.3 4.6 11.2 4.5 11.2 C 4.4 11.2 4.3 11.1 4.2 11 C 4.1 11 4.1 10.9 4.1 10.8 C 4 10.7 4 10.6 4 10.5 V 9.5 C 4 9.4 4 9.3 4.1 9.2 C 4.1 9.1 4.1 9 4.2 9 C 4.3 8.9 4.4 8.8 4.5 8.8 C 4.6 8.8 4.7 8.7 4.8 8.7 H 10.7 L 8.3 6.5 C 8.2 6.5 8.2 6.4 8.1 6.3 C 8.1 6.2 8.1 6.1 8.1 6 C 8.1 5.9 8.1 5.8 8.1 5.7 C 8.2 5.6 8.2 5.5 8.3 5.4 L 9 4.8 C 9.1 4.6 9.3 4.5 9.5 4.5 C 9.7 4.5 9.9 4.6 10 4.8 Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <span className="">Logout</span>
+                </div>
+              )}
             </li>
           </ul>
         </nav>

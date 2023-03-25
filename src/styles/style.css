@@ -615,6 +615,32 @@ header nav ul .user-profile .username {
   padding: 0 10px;
 }
 
+header nav ul .user-profile .logout {
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ce1f1f;
+  right: 0px;
+  top: 40px;
+  background: white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 20px 30px;
+}
+
+header nav ul .user-profile .logout span {
+  margin-left: 10px;
+}
+
 aside {
   position: -webkit-sticky;
   position: sticky;
@@ -766,6 +792,17 @@ aside .logout {
   padding: 10px 30px;
   margin-top: 49px;
   margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+aside .logout span {
+  padding: 10px;
 }
 
 aside .home a {

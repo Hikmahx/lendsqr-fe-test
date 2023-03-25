@@ -159,6 +159,26 @@ header {
         .username {
           padding: 0 10px;
         }
+
+        .logout {
+          z-index: 10;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgb(206, 31, 31);
+          right: 0px;
+          top: 40px;
+          background: white;
+          border: 1px solid rgba(33, 63, 125, 0.06);
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+          border-radius: 4px;
+          padding: 20px 30px;
+          span {
+            margin-left: 10px;
+          }
+        }
       }
     }
   }

@@ -121,6 +121,13 @@ aside {
     padding: 10px 30px;
     margin-top: 49px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    span {
+      padding: 10px;
+    }
   }
 
   .home {

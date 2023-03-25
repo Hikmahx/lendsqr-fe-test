@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { asideToggle } from "../../redux/reducers/sharedSlice";
 import { RootState } from "../../redux/store";
+import { logout } from "../../redux/reducers/authSlice";
 
 const Aside = () => {
   const { showAside } = useSelector((state: RootState) => state.shared);
+  const dispatch = useDispatch();
 
   return (
     <aside className={showAside ? "show-aside" : ""}>
@@ -776,7 +778,7 @@ const Aside = () => {
         </ul>
       </nav>
       <div className="">
-        <div className="logout">
+        <div className="logout" onClick={() => dispatch(logout())}>
           <svg
             width="16"
             height="16"
