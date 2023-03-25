@@ -3,7 +3,7 @@ export type User = {
   password: string;
 };
 
-export type UserDetails = {
+export type Details = {
   createdAt: string;
   orgName: string;
   userName: string;
@@ -44,9 +44,8 @@ export type UserDetails = {
     loanRepayment: string;
   };
   id: string;
-}[];
+};
 
-// export type UserDetails = {
-// }[] | []
+export type UsersDetails = Details[] | [];
 
-// export type UserDetails = {}[];
+// export type UsersDetails = {}[];

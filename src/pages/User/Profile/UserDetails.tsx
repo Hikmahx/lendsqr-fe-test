@@ -1,9 +1,24 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import BasicInfo from "../../../components/Dashboard/UserDetails/BasicInfo";
+import { fetchSingleUserDetails } from "../../../redux/reducers/detailsSlice";
+import { AppDispatch } from "../../../redux/store";
 
 const UserDetails = () => {
+  type ParamsType = {
+    id: string;
+  };
+
   const navigate = useNavigate();
+  const { id } = useParams<keyof ParamsType>() as ParamsType;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    console.log(id);
+    dispatch(fetchSingleUserDetails(id));
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="user-details-wrapper">
