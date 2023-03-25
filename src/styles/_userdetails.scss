@@ -1,0 +1,74 @@
+div.user-details-wrapper {
+  // width: 100%;
+  color: $grayish-blue;
+  h1 {
+    @media (min-width: 1023px) {
+      margin: 0;
+    }
+  }
+  button {
+    border: none;
+    background: none;
+    color: $grayish-blue;
+
+    &.back {
+      @include flexCenter(row);
+      margin-bottom: 32px;
+      span {
+        margin-left: 14px;
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+
+  .user-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: auto;
+
+    @media (min-width: 1023px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .user-btns {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    button {
+      width: 170px;
+      height: 40px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &.blacklist {
+        border: 1px solid #e4033b;
+        color: #e4033b;
+        &:hover {
+          color: white;
+          background: #e4033b;
+        }
+      }
+      &.activate {
+        border: 1px solid #39cdcc;
+        color: #39cdcc;
+
+        &:hover {
+          color: white;
+          background: #39cdcc;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.tabs-header {
+  margin-top: 51px;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: capitalize;
+  font-weight: 400;
+
+  @media (min-width: 1023px) {
+    font-size: 12px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 1023px) {
+      flex-direction: row;
+    }
+
+    li {
+      margin-bottom: 16px;
+      @media (min-width: 1023px) {
+        margin-bottom: 0;
+      }
+
+      a {
+        display: block;
+        padding-bottom: 10px;
+        &.active {
+          color: $bright-cyan;
+          position: relative;
+
+          &::before {
+            content: "";
+            position: absolute;
+            border: 2px solid $bright-cyan;
+            width: 100%;
+            margin: auto;
+            bottom: 0;
+            right: 0;
+            left: 0;
+          }
+        }
+
+        // .data-\[te-nav-active\]\:border-primary[data-te-nav-active] {
+        // [data="te-nav-active"]{
+        &.data-\[te-nav-active\] {
+          &[data-te-nav-active] {
+            color: $bright-cyan;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              border: 2px solid $bright-cyan;
+              width: 100%;
+              margin: auto;
+              bottom: 0;
+              right: 0;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
