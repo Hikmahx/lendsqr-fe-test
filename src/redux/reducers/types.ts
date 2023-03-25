@@ -1,7 +1,7 @@
-export type User = {
-  email: string;
+export type User = [{
+  username: string;
   password: string;
-};
+}];
 
 export type Details = {
   createdAt: string;

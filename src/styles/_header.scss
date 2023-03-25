@@ -7,7 +7,7 @@ header {
   @include flexCenter(row);
   justify-content: space-between;
 
-  .header-wrapper{
+  .header-wrapper {
     width: 100%;
     max-width: 811px;
     @include flexCenter(row);
@@ -15,8 +15,8 @@ header {
     // align-items: stretch;
 
     @media (min-width: 1023px) {
-    max-width: 1280px;
-    margin: auto;
+      max-width: 1280px;
+      margin: auto;
     }
   }
 
@@ -63,13 +63,19 @@ header {
   .logo {
     display: flex;
     align-items: center;
-
-    img {
+    a {
+      width: 90px;
       @media (min-width: 1023px) {
-        height: 30px;
+        width: 145px;
       }
-      @media (max-width: 1023px) {
-        width: 90px;
+
+      img {
+        @media (min-width: 1023px) {
+          height: 30px;
+        }
+        @media (max-width: 1023px) {
+          width: 90px;
+        }
       }
     }
   }
@@ -111,7 +117,7 @@ header {
       line-height: 19px;
       text-decoration-line: underline;
       color: $dull-blue;
-      @media (max-width: 700px) {
+      @media (max-width: 767px) {
         display: none;
       }
     }
@@ -123,9 +129,10 @@ header {
         margin-left: 50.16px;
         margin-right: 33.16px;
 
-        @media (max-width: 1023px) {
+        @media (max-width: 767px) {
           margin: 0 20px;
           width: 90%;
+          display: none;
 
           svg {
             width: 18px;
@@ -144,6 +151,9 @@ header {
             width: 30px;
             height: 30px;
           }
+        }
+        svg {
+          flex: none;
         }
 
         .username {

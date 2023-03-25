@@ -339,6 +339,14 @@ main.login-main .login-form button {
   width: 100%;
 }
 
+main.login-main .error-msg {
+  font-size: 10px;
+  color: red;
+  font-style: italic;
+  position: absolute;
+  top: -12px;
+}
+
 .dashboard {
   background-color: #fbfbfb;
   height: 100vh;
@@ -454,14 +462,24 @@ header .logo {
           align-items: center;
 }
 
+header .logo a {
+  width: 90px;
+}
+
 @media (min-width: 1023px) {
-  header .logo img {
+  header .logo a {
+    width: 145px;
+  }
+}
+
+@media (min-width: 1023px) {
+  header .logo a img {
     height: 30px;
   }
 }
 
 @media (max-width: 1023px) {
-  header .logo img {
+  header .logo a img {
     width: 90px;
   }
 }
@@ -520,7 +538,7 @@ header nav .docs-link {
   color: #21407d;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   header nav .docs-link {
     display: none;
   }
@@ -547,10 +565,11 @@ header nav ul .notification {
   margin-right: 33.16px;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   header nav ul .notification {
     margin: 0 20px;
     width: 90%;
+    display: none;
   }
   header nav ul .notification svg {
     width: 18px;
@@ -584,6 +603,12 @@ header nav ul .user-profile img {
     width: 30px;
     height: 30px;
   }
+}
+
+header nav ul .user-profile svg {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 
 header nav ul .user-profile .username {
