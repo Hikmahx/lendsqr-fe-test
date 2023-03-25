@@ -42,6 +42,7 @@ section.basic-info {
     background: rgba(33, 63, 125, 0.16);
     // opacity:;
     border-radius: 999px;
+    overflow: hidden;
     @include flexCenter(row);
 
     @media (min-width: 1023px) {

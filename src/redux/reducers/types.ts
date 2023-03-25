@@ -44,8 +44,8 @@ export type Details = {
     loanRepayment: string;
   };
   id: string;
-};
+}[];
 
-export type UsersDetails = Details[] | [];
+export type UsersDetails = Details | [];
 
 // export type UsersDetails = {}[];

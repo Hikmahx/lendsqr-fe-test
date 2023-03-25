@@ -1493,6 +1493,7 @@ section.basic-info .avatar {
   height: 80px;
   background: rgba(33, 63, 125, 0.16);
   border-radius: 999px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

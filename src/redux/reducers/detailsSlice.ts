@@ -34,7 +34,7 @@ export const fetchSingleUserDetails = createAsyncThunk<UsersDetails, string>(
         `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`
       );
       const details = await data;
-      return details;
+      return [details];
     } catch (err) {
       const error: AxiosError<KnownError> = err as any;
       if (!error.response) {
@@ -49,7 +49,7 @@ interface DetailsState {
   error: boolean;
   loading: boolean;
   details: UsersDetails | [];
-  usersDetails: Details | {};
+  userDetails: Details | [];
   success: boolean;
   errMsg: string | undefined;
 }
@@ -58,7 +58,7 @@ const initialState: DetailsState = {
   error: false,
   loading: false,
   details: [],
-  usersDetails: {},
+  userDetails: [],
   success: false,
   errMsg: "" as string | undefined,
   // statusByName: {}
@@ -90,7 +90,7 @@ const detailsSlice = createSlice({
     });
     builder.addCase(fetchSingleUserDetails.fulfilled, (state, action) => {
       state.loading = false;
-      state.usersDetails = action.payload;
+      state.userDetails = action.payload;
       state.errMsg = "";
     });
     builder.addCase(fetchSingleUserDetails.rejected, (state, action) => {
