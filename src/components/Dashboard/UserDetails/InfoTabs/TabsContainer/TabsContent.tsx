@@ -1,10 +1,10 @@
 import React from 'react'
-import AppAndSystem from './AppAndSystem'
-import BankDetails from './BankDetails'
-import Documents from './Documents'
-import GeneralDetails from './GeneralDetails'
-import Loans from './Loans'
-import Savings from './Savings'
+import AppAndSystem from '../Tabs/AppAndSystem'
+import BankDetails from '../Tabs/BankDetails'
+import Documents from '../Tabs/Documents'
+import GeneralDetails from '../Tabs/GeneralDetails'
+import Loans from '../Tabs/Loans'
+import Savings from '../Tabs/Savings'
 
 const TabsContent = () => {
   return (

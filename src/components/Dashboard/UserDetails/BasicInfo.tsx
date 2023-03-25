@@ -1,6 +1,6 @@
 import React from "react";
-import TabsContent from "./InfoTabs/TabsContent";
-import TabHeader from "./InfoTabs/TabsHeader";
+import TabsContent from "./InfoTabs/TabsContainer/TabsContent";
+import TabHeader from "./InfoTabs/TabsContainer/TabsHeader";
 
 const BasicInfo = () => {
   return (
