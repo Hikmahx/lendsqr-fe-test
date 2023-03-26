@@ -156,49 +156,62 @@ const Table = () => {
                     </>
                   ) : (
                     <>
-                      {details.map((detail, index) => (
-                        <tr key={detail.id}>
-                          <td className="org">{detail.orgName}</td>
-                          <td>{detail.userName}</td>
-                          <td className="email">{detail.email}</td>
-                          <td>
-                            {detail.phoneNumber.replace(
-                              /[^0-9 | / | - | \s]/g,
-                              ""
-                            )}
-                          </td>
-                          <td>
-                            <>
-                              {new Date(detail.createdAt).toLocaleString(
-                                "en-US",
-                                {
-                                  year: "numeric",
-                                  month: "short",
-                                  day: "numeric",
-                                  hour: "numeric",
-                                  minute: "numeric",
-                                  hour12: true,
-                                }
-                              )}
-                            </>
-                          </td>
-                          <td>
-                            <span
-                              className={`status-pill ${userStatus(detail.id)}`}
-                            >
-                              {userStatus(detail.id)}
-                            </span>
-                          </td>
-                          <td className="relative">
-                            <ColVertical id={detail.id} />
-                            {colId === `${detail.id}` ? (
-                              <UserQuery id={detail.id} setColId={setColId} />
-                            ) : (
-                              ""
-                            )}
-                          </td>
-                        </tr>
-                      ))}
+                      {details.length > 0 ? (
+                        <>
+                          {details.map((detail, index) => (
+                            <tr key={detail.id}>
+                              <td className="org">{detail.orgName}</td>
+                              <td>{detail.userName}</td>
+                              <td className="email">{detail.email}</td>
+                              <td>
+                                {detail.phoneNumber.replace(
+                                  /[^0-9 | / | - | \s]/g,
+                                  ""
+                                )}
+                              </td>
+                              <td>
+                                <>
+                                  {new Date(detail.createdAt).toLocaleString(
+                                    "en-US",
+                                    {
+                                      year: "numeric",
+                                      month: "short",
+                                      day: "numeric",
+                                      hour: "numeric",
+                                      minute: "numeric",
+                                      hour12: true,
+                                    }
+                                  )}
+                                </>
+                              </td>
+                              <td>
+                                <span
+                                  className={`status-pill ${userStatus(
+                                    detail.id
+                                  )}`}
+                                >
+                                  {userStatus(detail.id)}
+                                </span>
+                              </td>
+                              <td className="relative">
+                                <ColVertical id={detail.id} />
+                                {colId === `${detail.id}` ? (
+                                  <UserQuery
+                                    id={detail.id}
+                                    setColId={setColId}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </>
+                      ) : (
+                        <p className="" style={{ whiteSpace: "nowrap" }}>
+                          No data with this filter found.
+                        </p>
+                      )}
                     </>
                   )}
                 </>

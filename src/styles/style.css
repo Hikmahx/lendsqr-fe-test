@@ -1238,9 +1238,10 @@ span .filter {
   -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
           box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
-  padding: 20px 30px;
+  padding: 30px 20px;
   z-index: 10;
   margin-bottom: 20px;
+  color: #7b8db0;
 }
 
 @media (min-width: 1023px) {
@@ -1278,7 +1279,6 @@ span .filter {
   font-size: 14px;
   line-height: 16px;
   text-transform: capitalize;
-  color: #7b8db0;
   margin-bottom: 6px;
 }
 
@@ -1286,42 +1286,43 @@ span .filter {
 .filter-form .input-wrapper select {
   width: 100%;
   padding: 12px 20px;
-  height: 50px;
+  height: 40px;
   background: #ffffff;
   border: 1px solid rgba(84, 95, 125, 0.15);
   border-radius: 8px;
-  color: #545f7d;
 }
 
 .filter-form .input-wrapper input:focus,
 .filter-form .input-wrapper select:focus {
   border: 2px solid rgba(33, 64, 125, 0.6);
+  color: #545f7d;
 }
 
 .filter-form .input-wrapper input::-webkit-input-placeholder,
 .filter-form .input-wrapper select::-webkit-input-placeholder {
-  color: rgba(84, 95, 125, 0.6);
+  color: rgba(84, 95, 125, 0.7);
 }
 
 .filter-form .input-wrapper input:-ms-input-placeholder,
 .filter-form .input-wrapper select:-ms-input-placeholder {
-  color: rgba(84, 95, 125, 0.6);
+  color: rgba(84, 95, 125, 0.7);
 }
 
 .filter-form .input-wrapper input::-ms-input-placeholder,
 .filter-form .input-wrapper select::-ms-input-placeholder {
-  color: rgba(84, 95, 125, 0.6);
+  color: rgba(84, 95, 125, 0.7);
 }
 
 .filter-form .input-wrapper input::placeholder,
 .filter-form .input-wrapper select::placeholder {
-  color: rgba(84, 95, 125, 0.6);
+  color: rgba(84, 95, 125, 0.7);
 }
 
 .filter-form .input-wrapper select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  color: #7b8db0;
 }
 
 .filter-form .input-wrapper .select-wrapper {
@@ -1335,6 +1336,50 @@ span .filter {
   bottom: 0;
   height: 100%;
   right: 22px;
+}
+
+.filter-form .form-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+.filter-form .form-btns button {
+  width: 98px;
+  height: 40px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.filter-form .form-btns button.reset-btn {
+  border: 1px solid #21407d;
+  color: #21407d;
+}
+
+.filter-form .form-btns button.reset-btn:hover {
+  color: white;
+  background: #21407d;
+}
+
+.filter-form .form-btns button.filter-btn {
+  color: white;
+  background: #39cdcc;
+}
+
+.filter-form .form-btns button.filter-btn:hover {
+  border: 1px solid #39cdcc;
+  color: #39cdcc;
+  background: white;
 }
 
 .user-query {

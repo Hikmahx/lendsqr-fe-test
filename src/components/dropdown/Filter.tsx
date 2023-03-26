@@ -1,18 +1,76 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  fetchUsersDetails,
+  getAllOrgs,
+} from "../../redux/reducers/detailsSlice";
 
 const Filter = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { details, orgs } = useSelector((state: RootState) => state.details);
+  useEffect(() => {
+    dispatch(getAllOrgs());
+    // eslint-disable-next-line
+  }, [details]);
+
+  type FormValues = {
+    org: string;
+    username: string;
+    email: string;
+    date: string;
+    phone: string;
+    status: string;
+  };
+
+  const { register, handleSubmit, reset } = useForm<FormValues>({
+    mode: "onChange",
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log([data]);
+    dispatch(
+      fetchUsersDetails({
+        org: data.org !== "" ? `&orgName=${data.org}` : "",
+        username: data.username !== "" ? `&userName=${data.username}` : "",
+        email: data.email !== "" ? `&email=${data.email}` : "",
+        date:
+          data.date !== ""
+            ? `&createdAt=${new Date(data.date).toISOString()}`
+            : "",
+        phone: data.phone !== "" ? `&phoneNumber=${data.phone}` : "",
+      })
+    );
+    reset();
+  };
+
   return (
     <div className="filter">
-      <form className="filter-form">
+      <form className="filter-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="input-wrapper">
-          <label htmlFor="organization" className="">
+          <label htmlFor="org" className="">
             Organization
           </label>
           <span className="select-wrapper">
-            <select name="organization" id="organization">
-              <option value="Lendsqr">Lendsqr</option>
+            <select
+              // name="org"
+              id="org"
+              {...register("org")}
+            >
+              <option value="">Select</option>
+              {/* <option value="Lendsqr">Lendsqr</option>
               <option value="Irorun">Irorun</option>
-              <option value="Lendstar">Lendstar</option>
+              <option value="Lendstar">Lendstar</option> */}
+
+              {orgs.length > 0 && (
+                <>
+                  {orgs.map((org) => (
+                    <option value={`${org}`}>{org}</option>
+                  ))}
+                </>
+              )}
+              <option value="">All Organizations</option>
             </select>
             <svg
               width="12"
@@ -32,19 +90,37 @@ const Filter = () => {
           <label htmlFor="username" className="">
             username
           </label>
-          <input type="text" name="username" id="username" placeholder="User" />
+          <input
+            type="text"
+            // name="username"
+            id="username"
+            placeholder="User"
+            {...register("username")}
+          />
         </div>
         <div className="input-wrapper">
           <label htmlFor="email" className="">
             email
           </label>
-          <input type="email" name="email" id="email" placeholder="Email" />
+          <input
+            type="email"
+            // name="email"
+            id="email"
+            placeholder="Email"
+            {...register("email")}
+          />
         </div>
         <div className="input-wrapper">
           <label htmlFor="date" className="">
             date
           </label>
-          <input type="date" name="date" id="date" placeholder="Date" />
+          <input
+            type="date"
+            //  name="date"
+            id="date"
+            placeholder="Date"
+            {...register("date")}
+          />
         </div>
         <div className="input-wrapper">
           <label htmlFor="phone" className="">
@@ -52,9 +128,10 @@ const Filter = () => {
           </label>
           <input
             type="text"
-            name="phone"
+            // name="phone"
             id="phone"
             placeholder="Phone number"
+            {...register("phone")}
           />
         </div>
         <div className="input-wrapper">
@@ -62,7 +139,11 @@ const Filter = () => {
             status
           </label>
           <span className="select-wrapper">
-            <select name="status" id="status">
+            <select
+              // name="status"
+              id="status"
+              {...register("status")}
+            >
               <option value="" selected disabled>
                 Select
               </option>
@@ -84,6 +165,14 @@ const Filter = () => {
               />
             </svg>
           </span>
+        </div>
+        <div className="form-btns">
+          <button type="button" className="reset-btn">
+            Reset
+          </button>
+          <button type="submit" className="filter-btn">
+            Filter
+          </button>
         </div>
       </form>
     </div>

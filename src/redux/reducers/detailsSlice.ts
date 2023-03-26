@@ -32,6 +32,9 @@ export const fetchUsersDetails = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
+      console.log(
+        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}`
+      );
       let { data } = await axios.get(
         `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}`
       );
@@ -78,6 +81,7 @@ interface DetailsState {
   success: boolean;
   errMsg: string | undefined;
   storedUsersStatus: UsersStatus | [];
+  orgs: string[] | [];
 }
 
 const initialState: DetailsState = {
@@ -88,6 +92,7 @@ const initialState: DetailsState = {
   success: false,
   errMsg: "" as string | undefined,
   storedUsersStatus,
+  orgs: [],
 };
 
 const detailsSlice = createSlice({
@@ -114,7 +119,14 @@ const detailsSlice = createSlice({
       // SET THE STORAGE
       localStorage.setItem("storedUsersStatus", JSON.stringify(users));
 
-      state.storedUsersStatus = JSON.parse(localStorage.getItem("storedUsersStatus")!)
+      state.storedUsersStatus = JSON.parse(
+        localStorage.getItem("storedUsersStatus")!
+      );
+    },
+    getAllOrgs: (state) => {
+      state.orgs = Array.from(
+        new Set(state.details.map((item) => item.orgName))
+      ).sort();
     },
   },
   extraReducers: (builder) => {
@@ -150,5 +162,5 @@ const detailsSlice = createSlice({
   },
 });
 
-export const { updateUsersStatus } = detailsSlice.actions;
+export const { updateUsersStatus, getAllOrgs } = detailsSlice.actions;
 export default detailsSlice.reducer;
