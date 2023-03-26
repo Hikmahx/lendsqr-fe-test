@@ -820,7 +820,8 @@ main.dashboard-main {
           flex: 1 1 0%;
   position: -webkit-sticky;
   position: sticky;
-  overflow: scroll;
+  overflow: hidden;
+  overflow-y: scroll;
   padding: 30px;
   max-width: 500px;
   margin: 0 auto;

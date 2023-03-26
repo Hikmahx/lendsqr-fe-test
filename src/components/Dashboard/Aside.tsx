@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { asideToggle } from "../../redux/reducers/sharedSlice";
+import { asideToggle } from "../../redux/reducers/sharedSlice";
 import { AppDispatch, RootState } from "../../redux/store";
 import { logout } from "../../redux/reducers/authSlice";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -27,7 +27,9 @@ const Aside = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    navigate("/dashboard");
+    navigate("/dashboard#table");
+    document.querySelector("#table")?.scrollIntoView();
+
     console.log(data);
     dispatch(
       fetchUsersDetails({
@@ -35,6 +37,7 @@ const Aside = () => {
       })
     );
     reset();
+    dispatch(asideToggle(false));
   };
 
   return (

@@ -94,7 +94,7 @@ const Table = () => {
   };
 
   return (
-    <div className="table-container">
+    <div className="table-container" id="table">
       <div className="table-wrapper">
         <table>
           {!error && (
