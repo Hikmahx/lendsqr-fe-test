@@ -136,6 +136,14 @@ main.login-main .login-form input[type="password"]::placeholder {
   white-space: nowrap;
 }
 
+.error-msg {
+  font-size: 10px;
+  color: red;
+  font-style: italic;
+  position: absolute;
+  top: -12px;
+}
+
 main.login-main {
   min-height: 100vh;
   display: -webkit-box;
@@ -337,14 +345,6 @@ main.login-main .login-form .green-btn:hover {
 main.login-main .login-form button {
   font-family: "Avenir Next LT Pro", sans-serif;
   width: 100%;
-}
-
-main.login-main .error-msg {
-  font-size: 10px;
-  color: red;
-  font-style: italic;
-  position: absolute;
-  top: -12px;
 }
 
 .dashboard {

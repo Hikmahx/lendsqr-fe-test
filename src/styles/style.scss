@@ -131,6 +131,14 @@ input[type="password"] {
   white-space: nowrap;
 }
 
+.error-msg{
+  font-size: 10px;
+  color: red;
+  font-style: italic;
+  position: absolute;
+  top: -12px;
+}
+
 @import "./login";
 @import "./dashboard";
 @import "./header";

@@ -2,18 +2,46 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { asideToggle } from "../../redux/reducers/sharedSlice";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { logout } from "../../redux/reducers/authSlice";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { fetchUsersDetails } from "../../redux/reducers/detailsSlice";
 
 const Aside = () => {
   const { showAside } = useSelector((state: RootState) => state.shared);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  type FormValues = {
+    search: string;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormValues>({
+    mode: "onChange",
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    navigate("/dashboard");
+    console.log(data);
+    dispatch(
+      fetchUsersDetails({
+        search: data.search !== "" ? `&search=${data.search}` : "",
+      })
+    );
+    reset();
+  };
 
   return (
     <aside className={showAside ? "show-aside" : ""}>
       <nav className="">
-        <form className="search-form">
-          <div className="">
+        <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="relative">
             <label htmlFor="search" className="sr-only">
               search
             </label>
@@ -21,11 +49,21 @@ const Aside = () => {
               type="text"
               className=""
               id="search"
-              name="search"
+              // name="search"
               placeholder="Search for anything"
+              {...register("search", {
+                required: "Please include a search value",
+                maxLength: {
+                  value: 25,
+                  message: "search shouldn't be more than 25 characters",
+                },
+              })}
             />
+            {errors.search && (
+              <p className="error-msg">{errors.search.message}</p>
+            )}
           </div>
-          <button type="button" className="search-button">
+          <button type="submit" className="search-button">
             <span className="sr-only">Search for anything</span>
             <svg
               width="14"

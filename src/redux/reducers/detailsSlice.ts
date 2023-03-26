@@ -15,6 +15,7 @@ interface DetailsProps {
   date?: string;
   phone?: string;
   status?: string;
+  search?: string;
 }
 export const fetchUsersDetails = createAsyncThunk(
   "details/fetchUsersDetails",
@@ -28,15 +29,16 @@ export const fetchUsersDetails = createAsyncThunk(
       date = "",
       phone = "",
       status = "",
+      search = "",
     }: DetailsProps,
     { rejectWithValue }
   ) => {
     try {
       console.log(
-        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}`
+        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}${search}`
       );
       let { data } = await axios.get(
-        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}`
+        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}${search}`
       );
       const details = await data;
       return details;

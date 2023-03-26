@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import user from "../../assets/user/user.png";
 import { useDispatch, useSelector } from "react-redux";
 import { asideToggle } from "../../redux/reducers/sharedSlice";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/authSlice";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { fetchUsersDetails } from "../../redux/reducers/detailsSlice";
 const logo: string = require("../../assets/logo/logo.svg").default;
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { showAside } = useSelector((state: RootState) => state.shared);
   const { storedUserInfo } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
@@ -20,6 +22,30 @@ const Header = () => {
     storedUserInfo.length === 0 && navigate("/");
     // eslint-disable-next-line
   }, [storedUserInfo]);
+
+  type FormValues = {
+    search: string;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormValues>({
+    mode: "onChange",
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    navigate("/dashboard");
+    console.log(data);
+    dispatch(
+      fetchUsersDetails({
+        search: data.search !== "" ? `&search=${data.search}` : "",
+      })
+    );
+    reset();
+  };
 
   return (
     <header>
@@ -36,8 +62,8 @@ const Header = () => {
             <img src={logo} alt="Lendsqr" />
           </Link>
         </div>
-        <form className="search-form">
-          <div className="">
+        <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="relative">
             <label htmlFor="search" className="sr-only">
               search
             </label>
@@ -45,11 +71,21 @@ const Header = () => {
               type="text"
               className=""
               id="search"
-              name="search"
+              // name="search"
               placeholder="Search for anything"
+              {...register("search", {
+                required: "Please include a search value",
+                maxLength: {
+                  value: 25,
+                  message: "search value shouldn't be more than 25 characters",
+                },
+              })}
             />
+            {errors.search && (
+              <p className="error-msg">{errors.search.message}</p>
+            )}
           </div>
-          <button type="button" className="search-button">
+          <button type="submit" className="search-button">
             <span className="sr-only">Search for anything</span>
             <svg
               width="14"
