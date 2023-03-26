@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { updateUsersStatus } from "../../redux/reducers/detailsSlice";
 
 interface Props {
   id: string;
 }
 
 const UserQuery = ({ id }: Props) => {
+  const { details, storedUsersStatus } = useSelector(
+    (state: RootState) => state.details
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className="user-query">
       <Link to={`/dashboard/users/${id}`}>
@@ -31,7 +39,12 @@ const UserQuery = ({ id }: Props) => {
         </svg>
         <span className="">View Details</span>
       </Link>
-      <div>
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() =>
+          dispatch(updateUsersStatus({ id, status: "blacklisted" }))
+        }
+      >
         <svg
           width="12"
           height="14"
@@ -48,7 +61,10 @@ const UserQuery = ({ id }: Props) => {
         </svg>
         <span className="">Blacklist User</span>
       </div>
-      <div>
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => dispatch(updateUsersStatus({ id, status: "active" }))}
+      >
         <svg
           width="14"
           height="14"

@@ -7,7 +7,7 @@ import UserQuery from "../dropdown/UserQuery";
 const Table = () => {
   const [text, setText] = useState<string | null | undefined>();
   const [colId, setColId] = useState<string | null | undefined>();
-  const { details, loading, errMsg, error } = useSelector(
+  const { details, loading, errMsg, error, storedUsersStatus } = useSelector(
     (state: RootState) => state.details
   );
 
@@ -23,6 +23,23 @@ const Table = () => {
     setText(eventText);
     setColId("");
   };
+
+  const userStatus = (id: string) => {
+    try {
+      return storedUsersStatus.map((item) => item.id).includes(id)
+        ? storedUsersStatus.filter((item) => item.id === id)[0].status
+        : "inactive";
+      // console.log(storedUsersStatus.filter((item) => item.id === "1")[0].status);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // userStatus("0");
+
+  // console.log(
+  //   storedUsersStatus.filter((item) => item.id === "1")[0].status || "inactive"
+  // );
 
   interface colProps {
     id: string;
@@ -173,8 +190,8 @@ const Table = () => {
                             </>
                           </td>
                           <td>
-                            <span className="status-pill inactive">
-                              inactive
+                            <span className={`status-pill ${userStatus(detail.id)}`}>
+                            {userStatus(detail.id)}
                             </span>
                           </td>
                           <td className="relative">

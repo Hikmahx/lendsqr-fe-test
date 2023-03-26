@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { UsersDetails, Details } from "./types";
+import { UsersDetails, Details, UsersStatus } from "./types";
 
 interface KnownError {
   errMessage: string;
@@ -21,7 +21,7 @@ export const fetchUsersDetails = createAsyncThunk(
   async (
     {
       page = "1",
-      limit = "100",
+      limit = "10",
       org = "",
       username = "",
       email = "",
@@ -66,6 +66,10 @@ export const fetchSingleUserDetails = createAsyncThunk<UsersDetails, string>(
   }
 );
 
+const storedUsersStatus = localStorage.getItem("storedUsersStatus")
+  ? JSON.parse(localStorage.getItem("storedUsersStatus")!)
+  : [];
+
 interface DetailsState {
   error: boolean;
   loading: boolean;
@@ -73,6 +77,7 @@ interface DetailsState {
   userDetails: Details | [];
   success: boolean;
   errMsg: string | undefined;
+  storedUsersStatus: UsersStatus | [];
 }
 
 const initialState: DetailsState = {
@@ -82,13 +87,36 @@ const initialState: DetailsState = {
   userDetails: [],
   success: false,
   errMsg: "" as string | undefined,
-  // statusByName: {}
+  storedUsersStatus,
 };
 
 const detailsSlice = createSlice({
   name: "details",
   initialState,
-  reducers: {},
+  reducers: {
+    updateUsersStatus: (state, { payload }) => {
+      let users = JSON.parse(localStorage.getItem("storedUsersStatus")!) || [];
+
+      // IF THE USER IS ALREADY IN THE STORAGE
+      if (users.map((item: { id: any }) => item.id).includes(payload.id)) {
+        for (let i = 0; i < users.length; i++) {
+          // GET THE INDEX OF THE USER
+          if (users[i].id === payload.id) {
+            // UPDATE ITS STATUS
+            users[i].status = payload.status;
+          }
+        }
+      } else {
+        // IF USER ISN'T IN THE STORAGE
+        users = [...users, payload];
+      }
+
+      // SET THE STORAGE
+      localStorage.setItem("storedUsersStatus", JSON.stringify(users));
+
+      state.storedUsersStatus = JSON.parse(localStorage.getItem("storedUsersStatus")!)
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUsersDetails.pending, (state, action) => {
       state.loading = true;
@@ -122,4 +150,5 @@ const detailsSlice = createSlice({
   },
 });
 
+export const { updateUsersStatus } = detailsSlice.actions;
 export default detailsSlice.reducer;

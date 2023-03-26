@@ -1,7 +1,14 @@
-export type User = [{
-  username: string;
-  password: string;
-}];
+export type User = [
+  {
+    username: string;
+    password: string;
+  }
+];
+
+export type UsersStatus = {
+  id: string;
+  status: string;
+}[];
 
 export type Details = {
   createdAt: string;
