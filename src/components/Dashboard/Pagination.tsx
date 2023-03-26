@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import ReactDOM from "react-dom";
+import React from "react";
 import ReactPaginate from "react-paginate";
-import { useDispatch } from "react-redux";
-import { fetchUsersDetails } from "../../redux/reducers/detailsSlice";
-import { AppDispatch } from "../../redux/store";
-
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchUsersDetails,
+  setCurrentPage,
+} from "../../redux/reducers/detailsSlice";
+import { AppDispatch, RootState } from "../../redux/store";
 
 type Props = {
   currentItems: number[];
@@ -15,50 +14,19 @@ type Props = {
   selected: number;
 };
 
-function Items({ currentItems }: Props) {
-  return (
-    <>
-      {currentItems &&
-        currentItems.map((item) => (
-          <div>
-            <h3>Item #{item}</h3>
-          </div>
-        ))}
-    </>
-  );
-}
-
-function PaginatedItems({ itemsPerPage }: Props) {
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
-  const [itemOffset, setItemOffset] = useState(0);
-
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
-  const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
-  // const pageCount = Math.ceil(items.length / itemsPerPage);
+const PaginatedItems = ({ itemsPerPage }: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
   const pageCount = 16;
 
-  // Invoke when user click to request another page.
   const handlePageClick = (event: Props) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
+    // console.log(event.selected);
+    dispatch(fetchUsersDetails({ page: event.selected + 1 }));
+    dispatch(setCurrentPage(event.selected + 1));
   };
+  const { currentPage } = useSelector((state: RootState) => state.details);
 
   return (
     <>
-      {/* <Items
-        currentItems={currentItems}
-        itemsPerPage={0}
-        event={undefined}
-        selected={0}
-      /> */}
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
@@ -96,11 +64,12 @@ function PaginatedItems({ itemsPerPage }: Props) {
         containerClassName={"pagination"}
         disabledClassName={"pagination-link-disabled"}
         activeClassName={"pagination-link-active"}
-        // renderOnZeroPageCount={null}
+        // TO RETAIN THE CURRENT PADE NUMBER ON THE PAGINATION WHEN THE PAGE IS CHANGED
+        initialPage={currentPage - 1}
       />
     </>
   );
-}
+};
 
 const Pagination = () => {
   const dispatch = useDispatch<AppDispatch>();

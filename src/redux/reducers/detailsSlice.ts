@@ -7,7 +7,7 @@ interface KnownError {
 }
 // https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id
 interface DetailsProps {
-  page?: string;
+  page?: number;
   limit?: string;
   org?: string;
   username?: string;
@@ -21,7 +21,7 @@ export const fetchUsersDetails = createAsyncThunk(
   "details/fetchUsersDetails",
   async (
     {
-      page = "1",
+      page = 1,
       limit = "10",
       org = "",
       username = "",
@@ -84,6 +84,7 @@ interface DetailsState {
   errMsg: string | undefined;
   storedUsersStatus: UsersStatus | [];
   orgs: string[] | [];
+  currentPage: number;
 }
 
 const initialState: DetailsState = {
@@ -95,6 +96,7 @@ const initialState: DetailsState = {
   errMsg: "" as string | undefined,
   storedUsersStatus,
   orgs: [],
+  currentPage: 1,
 };
 
 const detailsSlice = createSlice({
@@ -130,6 +132,9 @@ const detailsSlice = createSlice({
         new Set(state.details.map((item) => item.orgName))
       ).sort();
     },
+    setCurrentPage: (state, { payload }) => {
+      state.currentPage = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUsersDetails.pending, (state, action) => {
@@ -164,5 +169,5 @@ const detailsSlice = createSlice({
   },
 });
 
-export const { updateUsersStatus, getAllOrgs } = detailsSlice.actions;
+export const { updateUsersStatus, getAllOrgs, setCurrentPage } = detailsSlice.actions;
 export default detailsSlice.reducer;
