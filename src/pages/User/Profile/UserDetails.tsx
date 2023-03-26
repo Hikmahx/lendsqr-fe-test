@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import BasicInfo from "../../../components/Dashboard/UserDetails/BasicInfo";
-import { fetchSingleUserDetails } from "../../../redux/reducers/detailsSlice";
+import {
+  fetchSingleUserDetails,
+  updateUsersStatus,
+} from "../../../redux/reducers/detailsSlice";
 import { AppDispatch } from "../../../redux/store";
 
 const UserDetails = () => {
@@ -22,7 +25,7 @@ const UserDetails = () => {
 
   return (
     <div className="user-details-wrapper">
-      <button onClick={() => navigate(-1)} className="back">
+      <button onClick={() => navigate("/dashboard/users")} className="back">
         <svg
           width="28"
           height="10"
@@ -41,8 +44,22 @@ const UserDetails = () => {
       <section className="user-header">
         <h1 className="">User Details</h1>
         <div className="user-btns">
-          <button className="blacklist">Blacklist User</button>
-          <button className="activate">Activate User</button>
+          <button
+            onClick={() =>
+              dispatch(updateUsersStatus({ id, status: "blacklisted" }))
+            }
+            className="blacklist"
+          >
+            Blacklist User
+          </button>
+          <button
+            onClick={() =>
+              dispatch(updateUsersStatus({ id, status: "active" }))
+            }
+            className="activate"
+          >
+            Activate User
+          </button>
         </div>
       </section>
       <BasicInfo />

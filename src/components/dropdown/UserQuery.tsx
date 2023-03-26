@@ -1,17 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
 import { updateUsersStatus } from "../../redux/reducers/detailsSlice";
 
 interface Props {
   id: string;
+  // setColId: () => {};
+  setColId: Dispatch<SetStateAction<string | null | undefined>>;
 }
 
-const UserQuery = ({ id }: Props) => {
-  const { details, storedUsersStatus } = useSelector(
-    (state: RootState) => state.details
-  );
+const UserQuery = ({ id, setColId }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -41,9 +40,10 @@ const UserQuery = ({ id }: Props) => {
       </Link>
       <div
         style={{ cursor: "pointer" }}
-        onClick={() =>
-          dispatch(updateUsersStatus({ id, status: "blacklisted" }))
-        }
+        onClick={() => {
+          setColId("");
+          dispatch(updateUsersStatus({ id, status: "blacklisted" }));
+        }}
       >
         <svg
           width="12"
@@ -63,7 +63,10 @@ const UserQuery = ({ id }: Props) => {
       </div>
       <div
         style={{ cursor: "pointer" }}
-        onClick={() => dispatch(updateUsersStatus({ id, status: "active" }))}
+        onClick={() => {
+          setColId("");
+          dispatch(updateUsersStatus({ id, status: "active" }));
+        }}
       >
         <svg
           width="14"

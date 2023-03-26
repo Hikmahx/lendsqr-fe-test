@@ -29,17 +29,10 @@ const Table = () => {
       return storedUsersStatus.map((item) => item.id).includes(id)
         ? storedUsersStatus.filter((item) => item.id === id)[0].status
         : "inactive";
-      // console.log(storedUsersStatus.filter((item) => item.id === "1")[0].status);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // userStatus("0");
-
-  // console.log(
-  //   storedUsersStatus.filter((item) => item.id === "1")[0].status || "inactive"
-  // );
 
   interface colProps {
     id: string;
@@ -190,14 +183,16 @@ const Table = () => {
                             </>
                           </td>
                           <td>
-                            <span className={`status-pill ${userStatus(detail.id)}`}>
-                            {userStatus(detail.id)}
+                            <span
+                              className={`status-pill ${userStatus(detail.id)}`}
+                            >
+                              {userStatus(detail.id)}
                             </span>
                           </td>
                           <td className="relative">
                             <ColVertical id={detail.id} />
                             {colId === `${detail.id}` ? (
-                              <UserQuery id={detail.id} />
+                              <UserQuery id={detail.id} setColId={setColId} />
                             ) : (
                               ""
                             )}
@@ -227,6 +222,3 @@ const Table = () => {
 };
 
 export default Table;
-function id(e: React.MouseEvent<SVGSVGElement, MouseEvent>, id: any): void {
-  throw new Error("Function not implemented.");
-}
