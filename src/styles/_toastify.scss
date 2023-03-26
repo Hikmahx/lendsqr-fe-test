@@ -1,0 +1,38 @@
+.Toastify__toast-container {
+  background: white;
+  font-family: "Work Sans", sans-serif;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast {
+    width: 90vw;
+    margin: 20px;
+  }
+}
+
+.blacklisted-background {
+  background: rgba(228, 3, 59, 0.06) !important;
+  color: rgba(228, 3, 59, 1) !important;
+}
+
+.blacklisted-progress-bar {
+  background: rgba(228, 3, 59, 1) !important;
+}
+
+.pending-background {
+  background: rgba(233, 178, 0, 0.06) !important;
+  color: rgba(233, 178, 0, 1) !important;
+}
+
+.pending-progress-bar {
+  background: rgba(233, 178, 0, 1) !important;
+}
+
+.active-background {
+  background: rgba(57, 205, 98, 0.06) !important;
+  color: rgba(57, 205, 98, 1) !important;
+}
+
+.active-progress-bar {
+  background: rgba(57, 205, 98, 1) !important;
+}

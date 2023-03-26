@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { updateUsersStatus } from "../../redux/reducers/detailsSlice";
+import { toast } from "react-toastify";
 
 interface Props {
   id: string;
@@ -43,6 +44,18 @@ const UserQuery = ({ id, setColId }: Props) => {
         onClick={() => {
           setColId("");
           dispatch(updateUsersStatus({ id, status: "blacklisted" }));
+          toast(<p style={{ fontSize: 16 }}>User status blacklisted</p>, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            draggable: true,
+            pauseOnHover: true,
+            type: "default",
+            className: "blacklisted-background",
+            progressClassName: "blacklisted-progress-bar",
+          });
         }}
       >
         <svg
@@ -66,6 +79,18 @@ const UserQuery = ({ id, setColId }: Props) => {
         onClick={() => {
           setColId("");
           dispatch(updateUsersStatus({ id, status: "active" }));
+          toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            draggable: true,
+            pauseOnHover: true,
+            type: "default",
+            className: "active-background",
+            progressClassName: "active-progress-bar",
+          });
         }}
       >
         <svg

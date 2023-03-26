@@ -7,6 +7,7 @@ import {
   updateUsersStatus,
 } from "../../../redux/reducers/detailsSlice";
 import { AppDispatch } from "../../../redux/store";
+import { toast } from "react-toastify";
 
 const UserDetails = () => {
   type ParamsType = {
@@ -45,17 +46,41 @@ const UserDetails = () => {
         <h1 className="">User Details</h1>
         <div className="user-btns">
           <button
-            onClick={() =>
-              dispatch(updateUsersStatus({ id, status: "blacklisted" }))
-            }
+            onClick={() => {
+              dispatch(updateUsersStatus({ id, status: "blacklisted" }));
+              toast(<p style={{ fontSize: 16 }}>User status blacklisted</p>, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnFocusLoss: true,
+                draggable: true,
+                pauseOnHover: true,
+                type: "default",
+                className: "blacklisted-background",
+                progressClassName: "blacklisted-progress-bar",
+              });
+            }}
             className="blacklist"
           >
             Blacklist User
           </button>
           <button
-            onClick={() =>
-              dispatch(updateUsersStatus({ id, status: "active" }))
-            }
+            onClick={() => {
+              dispatch(updateUsersStatus({ id, status: "active" }));
+              toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnFocusLoss: true,
+                draggable: true,
+                pauseOnHover: true,
+                type: "default",
+                className: "active-background",
+                progressClassName: "active-progress-bar",
+              });
+            }}
             className="activate"
           >
             Activate User
