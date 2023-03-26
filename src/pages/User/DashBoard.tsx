@@ -10,7 +10,7 @@ const DashBoard = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchUsersDetails(""));
+    dispatch(fetchUsersDetails({}));
     // eslint-disable-next-line
   }, []);
 

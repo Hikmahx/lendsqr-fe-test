@@ -2,6 +2,9 @@ import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
+import { useDispatch } from "react-redux";
+import { fetchUsersDetails } from "../../redux/reducers/detailsSlice";
+import { AppDispatch } from "../../redux/store";
 
 const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -100,12 +103,21 @@ function PaginatedItems({ itemsPerPage }: Props) {
 }
 
 const Pagination = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className="pagination-wrapper">
       <div className="show-quantity">
         <span>Showing</span>
         <span className="select-quantity">
-          <select aria-label="quantity" className="quantity">
+          <select
+            onChange={(e) => {
+              dispatch(fetchUsersDetails({ limit: `${e.target.value}` }));
+            }}
+            aria-label="quantity"
+            className="quantity"
+          >
+            <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option selected value="100" className="">

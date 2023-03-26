@@ -6,13 +6,34 @@ interface KnownError {
   errMessage: string;
 }
 // https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id
-
-export const fetchUsersDetails = createAsyncThunk<UsersDetails, string>(
+interface DetailsProps {
+  page?: string;
+  limit?: string;
+  org?: string;
+  username?: string;
+  email?: string;
+  date?: string;
+  phone?: string;
+  status?: string;
+}
+export const fetchUsersDetails = createAsyncThunk(
   "details/fetchUsersDetails",
-  async (arg, { rejectWithValue }) => {
+  async (
+    {
+      page = "1",
+      limit = "100",
+      org = "",
+      username = "",
+      email = "",
+      date = "",
+      phone = "",
+      status = "",
+    }: DetailsProps,
+    { rejectWithValue }
+  ) => {
     try {
       let { data } = await axios.get(
-        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`
+        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}`
       );
       const details = await data;
       return details;
