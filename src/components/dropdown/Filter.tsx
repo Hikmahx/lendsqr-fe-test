@@ -6,6 +6,7 @@ import {
   fetchUsersDetails,
   getAllOrgs,
 } from "../../redux/reducers/detailsSlice";
+import { setText } from "../../redux/reducers/sharedSlice";
 
 const Filter = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,6 +44,7 @@ const Filter = () => {
       })
     );
     reset();
+    dispatch(setText(""));
   };
 
   return (
@@ -59,14 +61,12 @@ const Filter = () => {
               {...register("org")}
             >
               <option value="">Select</option>
-              {/* <option value="Lendsqr">Lendsqr</option>
-              <option value="Irorun">Irorun</option>
-              <option value="Lendstar">Lendstar</option> */}
-
               {orgs.length > 0 && (
                 <>
                   {orgs.map((org) => (
-                    <option value={`${org}`}>{org}</option>
+                    <option key={org} value={`${org}`}>
+                      {org}
+                    </option>
                   ))}
                 </>
               )}

@@ -1916,5 +1916,6 @@ section.tabs-section .grid-wrapper div p {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
+  overflow-wrap: break-word;
 }
 /*# sourceMappingURL=style.css.map */

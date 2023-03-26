@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Filter from "../dropdown/Filter";
 import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserQuery from "../dropdown/UserQuery";
+import { setText } from "../../redux/reducers/sharedSlice";
 
 const Table = () => {
-  const [text, setText] = useState<string | null | undefined>();
   const [colId, setColId] = useState<string | null | undefined>();
   const { details, loading, errMsg, error, storedUsersStatus } = useSelector(
     (state: RootState) => state.details
   );
+  const { text } = useSelector((state: RootState) => state.shared);
+  const dispatch = useDispatch();
 
   const toggleFilterDiv = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>
@@ -20,7 +22,7 @@ const Table = () => {
         ? (event.target as Element).parentNode?.textContent
         : (event.target as Element).parentNode?.parentNode?.textContent;
 
-    setText(eventText);
+    dispatch(setText(eventText));
     setColId("");
   };
 
@@ -43,7 +45,7 @@ const Table = () => {
   ) => {
     event.stopPropagation();
     colId === id ? setColId("") : setColId(`${id}`);
-    setText("");
+    dispatch(setText(""));
   };
 
   const FilterIcon = () => {
