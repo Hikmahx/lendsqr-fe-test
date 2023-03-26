@@ -93,11 +93,15 @@ const Header = () => {
             </li>
             <li className="user-profile relative">
               <img src={user} alt="user icon" className="" />
-              <p className="username" style={{ textTransform: "capitalize" }}>
-                {storedUserInfo.map((user) => (
+              {storedUserInfo.map((user) => (
+                <p
+                  className="username"
+                  key={user.username}
+                  style={{ textTransform: "capitalize" }}
+                >
                   <>{user.username}</>
-                ))}
-              </p>
+                </p>
+              ))}
               <svg
                 style={{ cursor: "pointer " }}
                 onClick={() => setShowLogout(!showLogout)}
@@ -116,7 +120,11 @@ const Header = () => {
               </svg>
 
               {showLogout && (
-                <div style={{ cursor: "pointer " }} className="logout" onClick={() => dispatch(logout())}>
+                <div
+                  style={{ cursor: "pointer " }}
+                  className="logout"
+                  onClick={() => dispatch(logout())}
+                >
                   <svg
                     width="16"
                     height="16"
