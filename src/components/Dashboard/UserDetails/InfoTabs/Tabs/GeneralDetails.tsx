@@ -19,7 +19,7 @@ const GeneralDetails = () => {
             <>
               {userDetails.map((detail, index) => (
                 <>
-                  <div className="grid-container">
+                  <div key={detail.id} className="grid-container">
                     <h2>Personal Information</h2>
                     <div className="grid-wrapper">
                       <div className="">
@@ -88,7 +88,9 @@ const GeneralDetails = () => {
                       </div>
                       <div className="">
                         <h3>office email</h3>
-                        <p style={{ textTransform: "lowercase" }}>{detail.education.officeEmail}</p>
+                        <p style={{ textTransform: "lowercase" }}>
+                          {detail.education.officeEmail}
+                        </p>
                       </div>
                       <div className="">
                         <h3>Monthly income</h3>
