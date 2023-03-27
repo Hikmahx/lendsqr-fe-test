@@ -160,7 +160,7 @@ const Filter = () => {
           </span>
         </div>
         <div className="form-btns">
-          <button type="button" className="reset-btn">
+          <button onClick={()=>reset()} type="button" className="reset-btn">
             Reset
           </button>
           <button type="submit" className="filter-btn">
