@@ -43,17 +43,17 @@ This is a test project created for Lenders.
 
 
 #### Desktop
+<div style="display:flex; flex-wrap:wrap ">
+<img src="./designs/localhost_3000_.png" width='360px'> 
 
-![](./designs/localhost_3000_.png)
+<img src="./designs/localhost_3000_dashboard_users_1.png" width='360px'> 
 
-![](./designs/localhost_3000_dashboard_users_1.png)
+<img src="./designs/localhost_3000_dashboard_users_1%20(1).png" width='360px'> 
 
-![](./designs/localhost_3000_dashboard_users_1%20(1).png)
+<img src="./designs/localhost_3000_dashboard_users_1%20(2).png" width='360px'> 
 
-![](./designs/localhost_3000_dashboard_users_1%20(2).png)
-
-![](./designs/localhost_3000_dashboard_users_1%20(3).png)
-
+<img src="./designs/localhost_3000_dashboard_users_1%20(3).png" width='360px'> 
+</div>
 
 
 ### Link
