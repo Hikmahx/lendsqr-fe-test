@@ -11,10 +11,6 @@ section.basic-info {
   color: $dull-blue;
   flex-direction: column;
 
-  // @media (min-width: 1023px) {
-  //   flex-direction: row;
-  // }
-
   .info-container {
     @include flexCenter(column);
     width: 100%;
@@ -40,7 +36,6 @@ section.basic-info {
     width: 80px;
     height: 80px;
     background: rgba(33, 63, 125, 0.16);
-    // opacity:;
     border-radius: 999px;
     overflow: hidden;
     @include flexCenter(row);
@@ -70,7 +65,6 @@ section.basic-info {
   }
   .tier {
     @include flexCenter(column);
-    // justify-content: start;
     white-space: nowrap;
     max-height: 80px;
     padding: 0 30px;

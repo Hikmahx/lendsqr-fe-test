@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 interface Props {
   id: string;
-  // setColId: () => {};
   setColId: Dispatch<SetStateAction<string | null | undefined>>;
 }
 

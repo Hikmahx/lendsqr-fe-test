@@ -47,8 +47,7 @@
           }
         }
 
-        // .data-\[te-nav-active\]\:border-primary[data-te-nav-active] {
-        // [data="te-nav-active"]{
+
         &.data-\[te-nav-active\] {
           &[data-te-nav-active] {
             color: $bright-cyan;

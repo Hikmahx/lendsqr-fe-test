@@ -12,7 +12,6 @@ span {
     padding: 30px 20px;
     z-index: 10;
     margin-bottom: 20px;
-    // color: $grayish-blue;
     color: $dull-navy;
   }
   @media (min-width: 1023px) {
@@ -48,14 +47,12 @@ span {
     align-items: start;
     flex-direction: column;
     margin-bottom: 20px;
-    // color: $dull-navy;
 
     label {
       font-weight: 500;
       font-size: 14px;
       line-height: 16px;
       text-transform: capitalize;
-      // color: $dull-navy;
       margin-bottom: 6px;
     }
 
@@ -67,7 +64,6 @@ span {
       background: #ffffff;
       border: 1px solid rgba(84, 95, 125, 0.15);
       border-radius: 8px;
-      // color: $grayish-blue;
 
       &:focus {
         border: 2px solid rgba(33, 64, 125, 0.6);

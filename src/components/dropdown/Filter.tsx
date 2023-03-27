@@ -56,7 +56,6 @@ const Filter = () => {
           </label>
           <span className="select-wrapper">
             <select
-              // name="org"
               id="org"
               {...register("org")}
             >
@@ -92,7 +91,6 @@ const Filter = () => {
           </label>
           <input
             type="text"
-            // name="username"
             id="username"
             placeholder="User"
             {...register("username")}
@@ -104,7 +102,6 @@ const Filter = () => {
           </label>
           <input
             type="email"
-            // name="email"
             id="email"
             placeholder="Email"
             {...register("email")}
@@ -116,7 +113,6 @@ const Filter = () => {
           </label>
           <input
             type="date"
-            //  name="date"
             id="date"
             placeholder="Date"
             {...register("date")}
@@ -128,7 +124,6 @@ const Filter = () => {
           </label>
           <input
             type="text"
-            // name="phone"
             id="phone"
             placeholder="Phone number"
             {...register("phone")}
@@ -140,7 +135,6 @@ const Filter = () => {
           </label>
           <span className="select-wrapper">
             <select
-              // name="status"
               id="status"
               {...register("status")}
             >

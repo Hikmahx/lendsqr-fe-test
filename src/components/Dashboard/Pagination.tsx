@@ -19,7 +19,6 @@ const PaginatedItems = ({ itemsPerPage }: Props) => {
   const pageCount = 16;
 
   const handlePageClick = (event: Props) => {
-    // console.log(event.selected);
     dispatch(fetchUsersDetails({ page: event.selected + 1 }));
     dispatch(setCurrentPage(event.selected + 1));
   };
@@ -64,7 +63,7 @@ const PaginatedItems = ({ itemsPerPage }: Props) => {
         containerClassName={"pagination"}
         disabledClassName={"pagination-link-disabled"}
         activeClassName={"pagination-link-active"}
-        // TO RETAIN THE CURRENT PADE NUMBER ON THE PAGINATION WHEN THE PAGE IS CHANGED
+        // TO RETAIN THE CURRENT PAGE NUMBER ON THE PAGINATION WHEN THE PAGE IS CHANGED
         initialPage={currentPage - 1}
       />
     </>

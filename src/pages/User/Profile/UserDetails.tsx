@@ -10,6 +10,8 @@ import { AppDispatch } from "../../../redux/store";
 import { toast } from "react-toastify";
 
 const UserDetails = () => {
+  document.title = "Lendsqr User Details Page";
+
   type ParamsType = {
     id: string;
   };

@@ -29,9 +29,6 @@ export const authSlice = createSlice({
       localStorage.setItem("storedUserInfo", JSON.stringify(action.payload));
       state.storedUserInfo = action.payload;
     },
-    // removeError: (state, { payload }) => {
-    //   state.error = false;
-    // },
     logout: (state) => {
       localStorage.removeItem("storedUserInfo");
       state.loading = false;

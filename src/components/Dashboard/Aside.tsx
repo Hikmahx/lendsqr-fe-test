@@ -52,7 +52,6 @@ const Aside = () => {
               type="text"
               className=""
               id="search"
-              // name="search"
               placeholder="Search for anything"
               {...register("search", {
                 required: "Please include a search value",

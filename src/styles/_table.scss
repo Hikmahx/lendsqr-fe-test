@@ -17,13 +17,10 @@
       text-align: left;
       table-layout: auto;
       width: 100%;
-      // border-spacing: 35px 0;
       border-collapse: collapse;
       background: white;
       border-color: inherit;
       text-indent: 0;
-      // border-collapse: separate;
-      // border-spacing: 5em;
 
       thead {
         font-weight: 600;
@@ -33,17 +30,11 @@
         align-items: flex-end;
         text-transform: uppercase;
         display: table-header-group;
-        // display: table;
         table-layout: fixed;
         width: 100%;
 
-        // tr {
-        //   border-collapse: separate;
-        //   border-spacing: 5em;
-        // }
         th {
           padding-bottom: 15px;
-          // position: relative;
           span {
             @include flexCenter(row);
             white-space: nowrap;
@@ -57,7 +48,6 @@
       }
       th,
       td {
-        // border: ;
         padding: 0 17.5px;
         &:first-child {
           padding-left: 0;
@@ -66,10 +56,6 @@
           padding-right: 0;
         }
       }
-
-      // tr {
-      //   border-bottom: rgba($grayish-blue, 10%);
-      // }
 
       td {
         white-space: nowrap;

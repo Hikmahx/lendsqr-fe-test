@@ -54,5 +54,3 @@ export type Details = {
 }[];
 
 export type UsersDetails = Details | [];
-
-// export type UsersDetails = {}[];

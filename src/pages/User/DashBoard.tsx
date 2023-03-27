@@ -7,6 +7,8 @@ import { AppDispatch } from "../../redux/store";
 import { fetchUsersDetails } from "../../redux/reducers/detailsSlice";
 
 const DashBoard = () => {
+  document.title = "Lendsqr Dashboard";
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {

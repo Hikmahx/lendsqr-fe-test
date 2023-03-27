@@ -3,7 +3,6 @@ main.dashboard-main {
   position: sticky;
   overflow: hidden;
   overflow-y: scroll;
-  // overflow: scroll;
   padding: 30px;
   max-width: 500px;
   margin: 0 auto;
@@ -48,7 +47,6 @@ main.dashboard-main {
 
       @media (min-width: 1300px) {
         width: 23%;
-        // max-width: 240px;
         height: 165px;
       }
 

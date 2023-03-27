@@ -7,7 +7,7 @@ import { loginUser } from "../../redux/reducers/authSlice";
 const logo: string = require("../../assets/logo/logo.svg").default;
 
 const Login = () => {
-  document.title = "Login";
+  document.title = "Lendsqr Login";
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -25,21 +25,7 @@ const Login = () => {
     mode: "onChange",
   });
 
-  // useEffect(() => {
-  //   if (storedUserInfo.length > 0) {
-  //     // navigate("/dashboard");
-  //     // eslint-disable-next-line
-  //   }
-  // }, [storedUserInfo]);
-
   const [showPassword, setshowPassword] = useState<Boolean>(true);
-
-  // interface fieldValues {
-  //   data: {
-  //     username: string;
-  //     password: string;
-  //   };
-  // }
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     dispatch(loginUser([data]));
@@ -67,7 +53,6 @@ const Login = () => {
               type="text"
               className=""
               id="username"
-              // name="username"
               placeholder="Username"
               {...register("username", {
                 required: "Please include a username",
@@ -76,7 +61,6 @@ const Login = () => {
                   message: "Username shouldn't be more than 20 characters",
                 },
               })}
-              // required
             />
             {errors.username && (
               <p className="error-msg">{errors.username.message}</p>
@@ -90,7 +74,6 @@ const Login = () => {
               type={showPassword ? "password" : "text"}
               className=""
               id="password"
-              // name="password"
               placeholder="Password"
               {...register("password", {
                 required: "Please enter your password",
@@ -99,7 +82,6 @@ const Login = () => {
                   message: "Password shouldn't be less than 6 characters",
                 },
               })}
-              // required
             />
             <button
               type="button"

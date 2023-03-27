@@ -71,7 +71,6 @@ const Header = () => {
               type="text"
               className=""
               id="search"
-              // name="search"
               placeholder="Search for anything"
               {...register("search", {
                 required: "Please include a search value",
@@ -101,7 +100,6 @@ const Header = () => {
             </svg>
           </button>
         </form>
-        {/* {storedUserInfo.length > 0 ? ( */}
         <nav>
           <ul>
             <li>
@@ -184,9 +182,6 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        {/* ) : (
-          navigate
-        )} */}
       </div>
     </header>
   );
