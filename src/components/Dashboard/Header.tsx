@@ -38,7 +38,6 @@ const Header = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     navigate("/dashboard");
-    console.log(data);
     dispatch(
       fetchUsersDetails({
         search: data.search !== "" ? `&search=${data.search}` : "",

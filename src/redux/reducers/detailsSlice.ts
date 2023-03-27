@@ -33,9 +33,6 @@ export const fetchUsersDetails = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log(
-        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}${search}`
-      );
       let { data } = await axios.get(
         `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users?page=${page}&limit=${limit}${org}${username}${email}${date}${phone}${status}${search}`
       );

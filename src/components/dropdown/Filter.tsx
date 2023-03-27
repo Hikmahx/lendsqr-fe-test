@@ -30,7 +30,6 @@ const Filter = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log([data]);
     dispatch(
       fetchUsersDetails({
         org: data.org !== "" ? `&orgName=${data.org}` : "",

@@ -30,7 +30,6 @@ const Aside = () => {
     navigate("/dashboard#table");
     document.querySelector("#table")?.scrollIntoView();
 
-    console.log(data);
     dispatch(
       fetchUsersDetails({
         search: data.search !== "" ? `&search=${data.search}` : "",

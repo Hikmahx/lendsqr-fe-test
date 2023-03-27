@@ -21,7 +21,6 @@ const UserDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    console.log(id);
     dispatch(fetchSingleUserDetails(id));
     // eslint-disable-next-line
   }, []);
