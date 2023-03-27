@@ -28,16 +28,17 @@ This is a test project created for Lenders.
 
 #### Mobile
 
-![](./designs/localhost_3000_(Samsung%20Galaxy%20S8%2B).png)
+<div style="display:flex; flex-wrap:wrap ">
+<img src="./designs/localhost_3000_(Samsung%20Galaxy%20S8%2B).png" width='180px'> 
 
-![](./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B).png)
+<img src="./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B).png" width='180px'> 
 
-![](./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(2).png)
+<img src="./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(2).png" width='180px'> 
 
-![](./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(1).png)
+<img src="./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(1).png" width='180px'> 
 
-![](./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(3).png)
-
+<img src="./designs/localhost_3000_dashboard_users(Samsung%20Galaxy%20S8%2B)%20(3).png" width='180px'> 
+</div>
 
 
 
