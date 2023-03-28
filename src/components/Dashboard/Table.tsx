@@ -13,6 +13,7 @@ const Table = () => {
   const { text } = useSelector((state: RootState) => state.shared);
   const dispatch = useDispatch();
 
+  // TOGGLE THE FILTER COMPONENT
   const toggleFilterDiv = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
@@ -22,15 +23,21 @@ const Table = () => {
         ? (event.target as Element).parentNode?.textContent
         : (event.target as Element).parentNode?.parentNode?.textContent;
 
+  // OPENS THE FILTER COMPONENT RIGHT NEXT TO THE CLICKED TABLE HEADER
     dispatch(setText(eventText));
+    // CLOSE THE USER QUERY COMPONENT
     setColId("");
   };
 
+  // WILL GET THE STATUS OF A USER FROM THE LOCAL STORAGE BASED ON THE ID
   const userStatus = (id: string) => {
     try {
+      //  IF THE USER'S STATUS IS IN THE LOCAL STORAGE (IE STORED USERS STATUS ARRAY)
       return storedUsersStatus.map((item) => item.id).includes(id)
-        ? storedUsersStatus.filter((item) => item.id === id)[0].status
-        : "inactive";
+        ? // RETURN THE STATUS VALUE (FILTERS THRU THE ARRAY TO GET A SPECIFIC USER'S STATUS)
+          storedUsersStatus.filter((item) => item.id === id)[0].status
+        : // ELSE RETURN INACTIVE AS THE STATUS
+          "inactive";
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +46,8 @@ const Table = () => {
   interface colProps {
     id: string;
   }
+
+  // TOGGLE USER QUERY COMPONENT
   const toggleDropDown = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>,
     { id }: colProps
@@ -48,6 +57,7 @@ const Table = () => {
     dispatch(setText(""));
   };
 
+  // ICON NEXT TO EACH TABLE HEADER
   const FilterIcon = () => {
     return (
       <svg
@@ -66,6 +76,7 @@ const Table = () => {
     );
   };
 
+  // THREE VERTICAL DOTS ICON NEXT TO EACH TABLE ROW
   const ColVertical = ({ id }: colProps) => {
     return (
       <div className="col-dropdown">
