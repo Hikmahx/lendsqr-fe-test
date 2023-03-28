@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import BasicInfo from "../../../components/Dashboard/UserDetails/BasicInfo";
 import {
   fetchSingleUserDetails,
   updateUsersStatus,
 } from "../../../redux/reducers/detailsSlice";
-import { AppDispatch } from "../../../redux/store";
+import { AppDispatch, RootState } from "../../../redux/store";
 import { toast } from "react-toastify";
 
 const UserDetails = () => {
@@ -19,11 +19,109 @@ const UserDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams<keyof ParamsType>() as ParamsType;
   const dispatch = useDispatch<AppDispatch>();
-
+  const { storedUsersStatus } = useSelector(
+    (state: RootState) => state.details
+  );
   useEffect(() => {
     dispatch(fetchSingleUserDetails(id));
     // eslint-disable-next-line
   }, []);
+
+  // ACTIVATES THE USER'S STATUS AFTER A GIVEN TIME
+  const userStatusActivation = () => {
+    // REMOVES THIS (USER QUERY) COMPONENT
+    let status = storedUsersStatus.map((item) => item.id).includes(id)
+      ? // GET THE USER'S STATUS
+        storedUsersStatus.filter((item) => item.id === id)[0].status
+      : // OR USE DEFAULT (INACTIVE)
+        "inactive";
+    if (status === "active") {
+      toast(<p style={{ fontSize: 16 }}>This user is already activated</p>, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        draggable: true,
+        pauseOnHover: true,
+        type: "default",
+        className: "background",
+        progressClassName: "active-progress-bar",
+      });
+    } else {
+      if (status === "pending") {
+        toast(<p style={{ fontSize: 16 }}>This user is currently pending</p>, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          draggable: true,
+          pauseOnHover: true,
+          type: "default",
+          className: "background",
+          progressClassName: "pending-progress-bar",
+        });
+      } else {
+        // SETS THE USER'S STATUS TO PENDING
+        dispatch(updateUsersStatus({ id, status: "pending" }));
+        toast(<p style={{ fontSize: 16 }}>User status pending</p>, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          draggable: true,
+          pauseOnHover: true,
+          type: "default",
+          className: "pending-background",
+          progressClassName: "pending-progress-bar",
+        });
+        // NOTIFIES THAT THE USER'S STATUS WILL BE ACTIVATED AFTER SOME TIME
+        // THE TIMER IS FOR THIS NOTIFICATION TO COME AFTER THE ONE ABOVE
+        const pendingTimer = setTimeout(() => {
+          toast(
+            <p style={{ fontSize: 16 }}>
+              User status will be activated after 3 minutes
+            </p>,
+            {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnFocusLoss: true,
+              draggable: true,
+              pauseOnHover: true,
+              type: "default",
+              className: "pending-background",
+              progressClassName: "pending-progress-bar",
+            }
+          );
+        }, 2000);
+        // USER'S STATUS IS FINALLY ACTIVATED
+        const ActivationTimer = setTimeout(() => {
+          dispatch(updateUsersStatus({ id, status: "active" }));
+          toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            draggable: true,
+            pauseOnHover: true,
+            type: "default",
+            className: "active-background",
+            progressClassName: "active-progress-bar",
+          });
+        }, 3 * 60 * 1000);
+        // TIMEOUT CLEARED
+        return () => {
+          clearTimeout(pendingTimer);
+          clearTimeout(ActivationTimer);
+        };
+      }
+    }
+  };
 
   return (
     <div className="user-details-wrapper">
@@ -68,19 +166,7 @@ const UserDetails = () => {
           </button>
           <button
             onClick={() => {
-              dispatch(updateUsersStatus({ id, status: "active" }));
-              toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnFocusLoss: true,
-                draggable: true,
-                pauseOnHover: true,
-                type: "default",
-                className: "active-background",
-                progressClassName: "active-progress-bar",
-              });
+              userStatusActivation();
             }}
             className="activate"
           >

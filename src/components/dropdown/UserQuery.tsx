@@ -32,45 +32,8 @@ const UserQuery = ({ id, setColId, status }: Props) => {
         progressClassName: "active-progress-bar",
       });
     } else {
-      // SETS THE USER'S STATUS TO PENDING
-      dispatch(updateUsersStatus({ id, status: "pending" }));
-      toast(<p style={{ fontSize: 16 }}>User status pending</p>, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnFocusLoss: true,
-        draggable: true,
-        pauseOnHover: true,
-        type: "default",
-        className: "pending-background",
-        progressClassName: "pending-progress-bar",
-      });
-      // NOTIFIES THAT THE USER'S STATUS WILL BE ACTIVATED AFTER SOME TIME
-      // THE TIMER IS FOR THIS NOTIFICATION TO COME AFTER THE ONE ABOVE
-      const pendingTimer = setTimeout(() => {
-        toast(
-          <p style={{ fontSize: 16 }}>
-            User status will be activated after 3 minutes
-          </p>,
-          {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnFocusLoss: true,
-            draggable: true,
-            pauseOnHover: true,
-            type: "default",
-            className: "pending-background",
-            progressClassName: "pending-progress-bar",
-          }
-        );
-      }, 2000);
-      // USER'S STATUS IS FINALLY ACTIVATED
-      const ActivationTimer = setTimeout(() => {
-        dispatch(updateUsersStatus({ id, status: "active" }));
-        toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
+      if (status === "pending") {
+        toast(<p style={{ fontSize: 16 }}>This user is currently pending</p>, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -79,15 +42,67 @@ const UserQuery = ({ id, setColId, status }: Props) => {
           draggable: true,
           pauseOnHover: true,
           type: "default",
-          className: "active-background",
-          progressClassName: "active-progress-bar",
+          className: "background",
+          progressClassName: "pending-progress-bar",
         });
-      }, 3 * 60 * 1000);
-      // TIMEOUT CLEARED
-      return () => {
-        clearTimeout(pendingTimer);
-        clearTimeout(ActivationTimer);
-      };
+      } else {
+        // SETS THE USER'S STATUS TO PENDING
+        dispatch(updateUsersStatus({ id, status: "pending" }));
+        toast(<p style={{ fontSize: 16 }}>User status pending</p>, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          draggable: true,
+          pauseOnHover: true,
+          type: "default",
+          className: "pending-background",
+          progressClassName: "pending-progress-bar",
+        });
+        // NOTIFIES THAT THE USER'S STATUS WILL BE ACTIVATED AFTER SOME TIME
+        // THE TIMER IS FOR THIS NOTIFICATION TO COME AFTER THE ONE ABOVE
+        const pendingTimer = setTimeout(() => {
+          toast(
+            <p style={{ fontSize: 16 }}>
+              User status will be activated after 3 minutes
+            </p>,
+            {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnFocusLoss: true,
+              draggable: true,
+              pauseOnHover: true,
+              type: "default",
+              className: "pending-background",
+              progressClassName: "pending-progress-bar",
+            }
+          );
+        }, 2000);
+        // USER'S STATUS IS FINALLY ACTIVATED
+        const ActivationTimer = setTimeout(() => {
+          dispatch(updateUsersStatus({ id, status: "active" }));
+          toast(<p style={{ fontSize: 16 }}>User status activated</p>, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            draggable: true,
+            pauseOnHover: true,
+            type: "default",
+            className: "active-background",
+            progressClassName: "active-progress-bar",
+          });
+        }, 3 * 60 * 1000);
+        // TIMEOUT CLEARED
+        return () => {
+          clearTimeout(pendingTimer);
+          clearTimeout(ActivationTimer);
+        };
+      }
     }
   };
 

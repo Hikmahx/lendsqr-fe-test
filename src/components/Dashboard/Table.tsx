@@ -219,12 +219,12 @@ const Table = () => {
                                       storedUsersStatus
                                         .map((item) => item.id)
                                         .includes(detail.id)
-                                        // GET THE USER'S STATUS 
-                                        ? storedUsersStatus.filter(
+                                        ? // GET THE USER'S STATUS
+                                          storedUsersStatus.filter(
                                             (item) => item.id === detail.id
                                           )[0].status
-                                          // OR USE DEFAULT (INACTIVE)
-                                        : "inactive"
+                                        : // OR USE DEFAULT (INACTIVE)
+                                          "inactive"
                                     }
                                   />
                                 ) : (
