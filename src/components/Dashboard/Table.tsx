@@ -23,7 +23,7 @@ const Table = () => {
         ? (event.target as Element).parentNode?.textContent
         : (event.target as Element).parentNode?.parentNode?.textContent;
 
-  // OPENS THE FILTER COMPONENT RIGHT NEXT TO THE CLICKED TABLE HEADER
+    // OPENS THE FILTER COMPONENT RIGHT NEXT TO THE CLICKED TABLE HEADER
     dispatch(setText(eventText));
     // CLOSE THE USER QUERY COMPONENT
     setColId("");
@@ -214,6 +214,18 @@ const Table = () => {
                                   <UserQuery
                                     id={detail.id}
                                     setColId={setColId}
+                                    status={
+                                      // IF THE USER'S STATUS IS IN THE LOCAL STORAGE (IE STORED USERS STATUS ARRAY)
+                                      storedUsersStatus
+                                        .map((item) => item.id)
+                                        .includes(detail.id)
+                                        // GET THE USER'S STATUS 
+                                        ? storedUsersStatus.filter(
+                                            (item) => item.id === detail.id
+                                          )[0].status
+                                          // OR USE DEFAULT (INACTIVE)
+                                        : "inactive"
+                                    }
                                   />
                                 ) : (
                                   ""
