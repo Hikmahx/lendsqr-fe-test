@@ -23,12 +23,23 @@
     "react-toastify": "^9.1.2",
     "redux": "^4.2.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5",
+    "nodemailer": "^6.9.1"
   },
-
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^2.0.20"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "concurrently \"nodemon index.js\" \"react-scripts start\"",
+    "start": "concurrently \"node index.js\" \"react-scripts start\"",
+    "build": "npm install --force && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

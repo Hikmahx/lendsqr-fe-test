@@ -16,8 +16,8 @@ mongoose
   .catch((err) => console.log("MongoDB connection error:", err))
 
 // Routes
-app.use("/api/auth", require("./routes/authRoutes"))
-app.use("/api/users", require("./routes/userRoutes"))
+app.use("/api/auth", require("./server/routes/authRoutes"))
+app.use("/api/users", require("./server/routes/userRoutes"))
 
 // Health check
 app.get("/api/health", (req, res) => {
