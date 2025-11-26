@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { AppDispatch } from "../../redux/store";
 import { loginUser } from "../../redux/reducers/authSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 const logo: string = require("../../assets/logo/logo.svg").default;
 
 const Login = () => {
@@ -44,11 +45,11 @@ const Login = () => {
         dispatch(loginUser([{ username: result.user.username }]));
         localStorage.setItem("authToken", result.token);
         navigate("/dashboard");
-      } else {
-        alert(result.message || "Login failed");
+      } else {        
+        toast.error(result.message || "Login failed");
       }
     } catch (error) {
-      alert("An error occurred during login");
+      toast.error("An error occurred during login");
       console.error(error);
     }
   };
