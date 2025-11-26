@@ -1999,6 +1999,10 @@ section.tabs-section .grid-wrapper div p {
   font-family: "Work Sans", sans-serif;
 }
 
+.Toastify__close-button {
+  width: auto !important;
+}
+
 @media only screen and (max-width: 480px) {
   .Toastify__toast {
     width: 90vw;
