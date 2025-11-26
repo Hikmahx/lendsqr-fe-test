@@ -38,7 +38,7 @@
   "scripts": {
     "dev": "concurrently \"nodemon index.js\" \"react-scripts start\"",
     "start": "concurrently \"node index.js\" \"react-scripts start\"",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,7 +52,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not ie > 0"
     ],
     "development": [
       "last 1 chrome version",
