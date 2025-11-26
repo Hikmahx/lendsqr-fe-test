@@ -31,7 +31,7 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,10 +46,34 @@ const Login = () => {
         localStorage.setItem("authToken", result.token);
         navigate("/dashboard");
       } else {        
-        toast.error(result.message || "Login failed");
+        // toast.error(result.message || "Login failed");
+              toast(<p style={{ fontSize: 16 }}>This user is already activated</p>, {
+                position: "top-right",
+                autoClose: 300000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnFocusLoss: true,
+                draggable: true,
+                pauseOnHover: true,
+                type: "default",
+                className: "background",
+                progressClassName: "active-progress-bar",
+              });
       }
     } catch (error) {
-      toast.error("An error occurred during login");
+      // toast.error("An error occurred during login");
+            toast(<p style={{ fontSize: 16 }}>This user is already activated</p>, {
+              position: "top-right",
+              autoClose: 300000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnFocusLoss: true,
+              draggable: true,
+              pauseOnHover: true,
+              type: "default",
+              className: "background",
+              progressClassName: "active-progress-bar",
+            });
       console.error(error);
     }
   };

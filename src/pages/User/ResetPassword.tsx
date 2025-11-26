@@ -38,7 +38,7 @@ const ResetPassword = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/reset-password/${token}`,
+        `/api/auth/reset-password/${token}`,
         {
           method: "POST",
           headers: {

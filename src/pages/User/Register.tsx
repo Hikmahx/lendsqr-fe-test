@@ -12,6 +12,7 @@ const Register = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  
 
   type FormValues = {
     firstName: string;
@@ -45,7 +46,7 @@ const Register = () => {
 
     try {
       // Call register API
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
