@@ -13,6 +13,7 @@ main.login-main {
 
   .login-bg,
   .login-form {
+    display: flex;
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -46,6 +47,7 @@ main.login-main {
   .login-form {
     box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
     padding: 0 100px;
+    margin: auto;
     position: relative;
     @media (max-width: 1023px) {
       @include flexCenter(column);
@@ -70,15 +72,28 @@ main.login-main {
       @extend input;
       margin-bottom: 24px;
     }
-    @media (min-width: 1023px) {
-      padding-top: 24.5vh;
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
     }
+
+    // @media (min-width: 1023px) {
+    //   padding-top: 24.5vh;
+    // }
 
     .forgot-wrapper {
       margin-bottom: 30px;
     }
 
-    .forgot-password {
+    .forgot-password,
+    .register-link, .login-link {
       width: 147px;
       height: 17px;
       font-style: normal;
@@ -89,6 +104,24 @@ main.login-main {
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: $bright-cyan;
+      text-decoration: none;
+    }
+
+    .register-link-wrapper,
+    .login-link-wrapper {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .register-link-text,
+    .login-link-text {
+      font-size: 14px;
+      color: $grayish-blue;
+    }
+
+    .register-link:hover,
+    .login-link:hover {
+      color: $dull-blue;
     }
 
     button.show-password {
@@ -131,6 +164,11 @@ main.login-main {
       &:hover {
         background: $dull-blue;
         border: 2px solid $dull-blue;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
       }
     }
 

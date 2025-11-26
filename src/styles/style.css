@@ -77,6 +77,12 @@ main {
 }
 
 input[type="text"], main.login-main .login-form input[type="text"],
+input[type="email"],
+main.login-main .login-form input[type="email"],
+input[type="tel"],
+main.login-main .login-form input[type="tel"],
+input[type="number"],
+main.login-main .login-form input[type="number"],
 input[type="password"],
 main.login-main .login-form input[type="password"] {
   width: 100%;
@@ -92,30 +98,60 @@ main.login-main .login-form input[type="password"] {
 }
 
 input[type="text"]:focus, main.login-main .login-form input[type="text"]:focus,
+input[type="email"]:focus,
+main.login-main .login-form input[type="email"]:focus,
+input[type="tel"]:focus,
+main.login-main .login-form input[type="tel"]:focus,
+input[type="number"]:focus,
+main.login-main .login-form input[type="number"]:focus,
 input[type="password"]:focus,
 main.login-main .login-form input[type="password"]:focus {
   border: 2px solid rgba(33, 64, 125, 0.6);
 }
 
 input[type="text"]::-webkit-input-placeholder, main.login-main .login-form input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+main.login-main .login-form input[type="email"]::-webkit-input-placeholder,
+input[type="tel"]::-webkit-input-placeholder,
+main.login-main .login-form input[type="tel"]::-webkit-input-placeholder,
+input[type="number"]::-webkit-input-placeholder,
+main.login-main .login-form input[type="number"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder,
 main.login-main .login-form input[type="password"]::-webkit-input-placeholder {
   color: rgba(84, 95, 125, 0.6);
 }
 
 input[type="text"]:-ms-input-placeholder, main.login-main .login-form input[type="text"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+main.login-main .login-form input[type="email"]:-ms-input-placeholder,
+input[type="tel"]:-ms-input-placeholder,
+main.login-main .login-form input[type="tel"]:-ms-input-placeholder,
+input[type="number"]:-ms-input-placeholder,
+main.login-main .login-form input[type="number"]:-ms-input-placeholder,
 input[type="password"]:-ms-input-placeholder,
 main.login-main .login-form input[type="password"]:-ms-input-placeholder {
   color: rgba(84, 95, 125, 0.6);
 }
 
 input[type="text"]::-ms-input-placeholder, main.login-main .login-form input[type="text"]::-ms-input-placeholder,
+input[type="email"]::-ms-input-placeholder,
+main.login-main .login-form input[type="email"]::-ms-input-placeholder,
+input[type="tel"]::-ms-input-placeholder,
+main.login-main .login-form input[type="tel"]::-ms-input-placeholder,
+input[type="number"]::-ms-input-placeholder,
+main.login-main .login-form input[type="number"]::-ms-input-placeholder,
 input[type="password"]::-ms-input-placeholder,
 main.login-main .login-form input[type="password"]::-ms-input-placeholder {
   color: rgba(84, 95, 125, 0.6);
 }
 
 input[type="text"]::placeholder, main.login-main .login-form input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+main.login-main .login-form input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+main.login-main .login-form input[type="tel"]::placeholder,
+input[type="number"]::placeholder,
+main.login-main .login-form input[type="number"]::placeholder,
 input[type="password"]::placeholder,
 main.login-main .login-form input[type="password"]::placeholder {
   color: rgba(84, 95, 125, 0.6);
@@ -184,6 +220,9 @@ main.login-main {
 
 main.login-main .login-bg,
 main.login-main .login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -227,6 +266,7 @@ main.login-main .login-form {
   -webkit-box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
           box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
   padding: 0 100px;
+  margin: auto;
   position: relative;
 }
 
@@ -272,9 +312,19 @@ main.login-main .login-form input {
   margin-bottom: 24px;
 }
 
-@media (min-width: 1023px) {
-  main.login-main .login-form {
-    padding-top: 24.5vh;
+main.login-main .login-form .form-row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  main.login-main .login-form .form-row {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
@@ -282,7 +332,8 @@ main.login-main .login-form .forgot-wrapper {
   margin-bottom: 30px;
 }
 
-main.login-main .login-form .forgot-password {
+main.login-main .login-form .forgot-password,
+main.login-main .login-form .register-link, main.login-main .login-form .login-link {
   width: 147px;
   height: 17px;
   font-style: normal;
@@ -293,6 +344,24 @@ main.login-main .login-form .forgot-password {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #39cdcc;
+  text-decoration: none;
+}
+
+main.login-main .login-form .register-link-wrapper,
+main.login-main .login-form .login-link-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+main.login-main .login-form .register-link-text,
+main.login-main .login-form .login-link-text {
+  font-size: 14px;
+  color: #545f7d;
+}
+
+main.login-main .login-form .register-link:hover,
+main.login-main .login-form .login-link:hover {
+  color: #21407d;
 }
 
 main.login-main .login-form button.show-password {
@@ -340,6 +409,11 @@ main.login-main .login-form .green-btn {
 main.login-main .login-form .green-btn:hover {
   background: #21407d;
   border: 2px solid #21407d;
+}
+
+main.login-main .login-form .green-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 main.login-main .login-form button {
