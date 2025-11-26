@@ -180,6 +180,39 @@ main.login-main .login-form input[type="password"]::placeholder {
   top: -12px;
 }
 
+.green-btn {
+  background: #39cdcc;
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 2px solid #39cdcc;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: white;
+  padding: 0.875rem;
+  cursor: pointer;
+  -webkit-transition: 150ms all ease-in;
+  transition: 150ms all ease-in;
+}
+
+.green-btn:hover {
+  background: #21407d;
+  border: 2px solid #21407d;
+}
+
+.green-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button {
+  font-family: "Avenir Next LT Pro", sans-serif;
+  width: 100%;
+}
+
 main.login-main {
   min-height: 100vh;
   display: -webkit-box;
@@ -386,39 +419,6 @@ main.login-main .login-form button.show-password {
 
 main.login-main .login-form button.show-password:hover {
   color: #21407d;
-}
-
-main.login-main .login-form .green-btn {
-  background: #39cdcc;
-  border-radius: 8px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 2px solid #39cdcc;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
-  color: white;
-  padding: 0.875rem;
-  cursor: pointer;
-  -webkit-transition: 150ms all ease-in;
-  transition: 150ms all ease-in;
-}
-
-main.login-main .login-form .green-btn:hover {
-  background: #21407d;
-  border: 2px solid #21407d;
-}
-
-main.login-main .login-form .green-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-main.login-main .login-form button {
-  font-family: "Avenir Next LT Pro", sans-serif;
-  width: 100%;
 }
 
 .dashboard {
