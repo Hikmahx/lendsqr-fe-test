@@ -28,8 +28,10 @@ const Login = () => {
   });
 
   const [showPassword, setshowPassword] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setIsLoading(true);
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -45,12 +47,14 @@ const Login = () => {
         dispatch(loginUser([{ username: result.user.username }]));
         localStorage.setItem("authToken", result.token);
         navigate("/dashboard");
-      } else {        
+      } else {
         toast.error(result.message || "Login failed");
       }
     } catch (error) {
       toast.error("An error occurred during login");
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,7 +66,7 @@ const Login = () => {
         </div>
       </div>
       <div className="login-form">
-        <div style={{width:'100%', margin: 'auto'}}>
+        <div style={{ width: "100%", margin: "auto" }}>
           <h1 className="bold text-dull-blue text-40 mb-10">Welcome!</h1>
           <p className="text-grayish-blue text-20 mb-60">
             Enter details to login.
@@ -122,8 +126,13 @@ const Login = () => {
                 forgot password
               </Link>
             </div>
-            <button type="submit" className="green-btn">
-              log in
+            <button
+              type="submit"
+              className="green-btn"
+              disabled={isLoading}
+              style={{ opacity: isLoading ? 0.6 : 1 }}
+            >
+              {isLoading ? "Logging in..." : "log in"}
             </button>
             <div className="register-link-wrapper">
               <p className="register-link-text">

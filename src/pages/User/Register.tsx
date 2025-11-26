@@ -13,7 +13,6 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   
-
   type FormValues = {
     firstName: string;
     lastName: string;
@@ -37,6 +36,7 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
   const password = watch("password");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (data.password !== data.confirmPassword) {
@@ -44,6 +44,7 @@ const Register = () => {
       return;
     }
 
+    setIsLoading(true);
     try {
       // Call register API
       const response = await fetch("/api/auth/register", {
@@ -81,6 +82,8 @@ const Register = () => {
     } catch (error) {
       toast.error("An error occurred during registration");
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -260,8 +263,13 @@ const Register = () => {
               )}
             </div>
 
-            <button type="submit" className="green-btn">
-              create account
+            <button
+              type="submit"
+              className="green-btn"
+              disabled={isLoading}
+              style={{ opacity: isLoading ? 0.6 : 1 }}
+            >
+              {isLoading ? "Creating..." : "create account"}
             </button>
 
             <div className="login-link-wrapper">
