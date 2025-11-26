@@ -25,13 +25,15 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "OK", message: "Server is running" });
 });
 
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, "build")));
+if (process.env.NODE_ENV === "production") {
+  // Serve static files from the React app
+  app.use(express.static(path.join(__dirname, "build")));
 
-// Handle React routing, return all requests to React app
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+  // Route all other requests to the React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build/index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
