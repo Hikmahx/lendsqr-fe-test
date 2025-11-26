@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import user from "../../assets/user/user.png";
 import { useDispatch, useSelector } from "react-redux";
 import { asideToggle } from "../../redux/reducers/sharedSlice";
@@ -16,12 +16,31 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [showLogout, setShowLogout] = useState(false);
+  const logoutRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     // RETURN TO LOGIN PAGE IF NO USER IS LOGGED IN
     storedUserInfo.length === 0 && navigate("/");
     // eslint-disable-next-line
   }, [storedUserInfo]);
+
+  useEffect(() => {
+    // CLOSE LOGOUT MENU WHEN CLICKING OUTSIDE
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        logoutRef.current &&
+        !logoutRef.current.contains(event.target as Node)
+      ) {
+        setShowLogout(false);
+      }
+    };
+    if (showLogout) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showLogout]);
 
   type FormValues = {
     search: string;
@@ -124,7 +143,7 @@ const Header = () => {
                 </svg>
               </span>
             </li>
-            <li className="user-profile relative">
+            <li className="user-profile relative" ref={logoutRef}>
               <img src={user} alt="user icon" className="" />
               {storedUserInfo.map((user) => (
                 <p
@@ -136,7 +155,7 @@ const Header = () => {
                 </p>
               ))}
               <svg
-                style={{ cursor: "pointer " }}
+                style={{ cursor: "pointer" }}
                 onClick={() => setShowLogout(!showLogout)}
                 width="8"
                 height="5"
@@ -154,9 +173,12 @@ const Header = () => {
 
               {showLogout && (
                 <div
-                  style={{ cursor: "pointer " }}
+                  style={{ cursor: "pointer" }}
                   className="logout"
-                  onClick={() => dispatch(logout())}
+                  onClick={() => {
+                    dispatch(logout());
+                    setShowLogout(false);
+                  }}
                 >
                   <svg
                     width="16"
