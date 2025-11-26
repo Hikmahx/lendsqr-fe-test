@@ -46,34 +46,10 @@ const Login = () => {
         localStorage.setItem("authToken", result.token);
         navigate("/dashboard");
       } else {        
-        // toast.error(result.message || "Login failed");
-              toast(<p style={{ fontSize: 16 }}>This user is already activated</p>, {
-                position: "top-right",
-                autoClose: 300000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnFocusLoss: true,
-                draggable: true,
-                pauseOnHover: true,
-                type: "default",
-                className: "background",
-                progressClassName: "active-progress-bar",
-              });
+        toast.error(result.message || "Login failed");
       }
     } catch (error) {
-      // toast.error("An error occurred during login");
-            toast(<p style={{ fontSize: 16 }}>This user is already activated</p>, {
-              position: "top-right",
-              autoClose: 300000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnFocusLoss: true,
-              draggable: true,
-              pauseOnHover: true,
-              type: "default",
-              className: "background",
-              progressClassName: "active-progress-bar",
-            });
+      toast.error("An error occurred during login");
       console.error(error);
     }
   };
